@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility — Campusmind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #3a7d44;
+      --green-dark: #2d6235;
+      --green-bg: #eef7f0;
+      --green-light: #d4edda;
+      --navy: #1a2d42;
+      --page-bg: #fff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #111827;
+      background: var(--page-bg);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── LOGO BAR ── */
+    .logo-bar {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-home {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .logo-home img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ── HERO (nav only) ── */
+    .hero {
+      background: #f9fafb;
+      padding: 2rem 2rem 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── QUICK NAV ── */
+    .quick-nav {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .quick-nav a {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      transition: color 0.15s;
+      white-space: nowrap;
+      padding-bottom: 0.75rem;
+    }
+
+    .quick-nav a:hover { color: var(--green); }
+    .quick-nav a:hover .nav-icon-wrap { background: #c3e0cb; }
+    .quick-nav a.active { color: var(--navy); }
+
+    .nav-icon-wrap {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #ebebf0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+
+    .quick-nav a.active .nav-icon-wrap {
+      background: #fff;
+      box-shadow: 0 0 0 3px var(--green);
+    }
+
+    .nav-icon-wrap svg { width: 26px; height: 26px; }
+
+    /* ── PAGE BODY ── */
+    .page-body {
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 1.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ── HERO SECTION (headline + before/after + features) ── */
+    .hero-section {
+      padding: 3rem 0 3rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .hero-headline {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .hero-headline span { color: var(--green); }
+
+    /* Before/After */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .ba-panel {
+      border: 1.5px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .ba-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.5rem 0.9rem;
+      border-bottom: 1.5px solid #e5e7eb;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    .ba-label--after {
+      color: var(--green);
+      background: var(--green-bg);
+    }
+
+    .ba-content {
+      padding: 0.85rem 0.9rem;
+      background: #fafafa;
+    }
+
+    .ba-content--after {
+      background: #fff;
+    }
+
+    .ba-doc-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .ba-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .ba-line {
+      height: 7px;
+      border-radius: 3px;
+      background: #e5e7eb;
+    }
+
+    .ba-line--dark { background: #d1d5db; width: 90%; }
+    .ba-line--med { background: #e5e7eb; width: 75%; }
+    .ba-line--short { background: #e5e7eb; width: 55%; }
+    .ba-line--full { background: #e5e7eb; width: 100%; }
+
+    /* math formula lines */
+    .ba-formula {
+      font-size: 0.65rem;
+      color: #374151;
+      font-family: "Courier New", monospace;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+      padding: 0.3rem 0.5rem;
+      margin: 0.25rem 0;
+    }
+
+    /* After: tagged doc visual */
+    .ba-tagged {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .ba-tag-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.65rem;
+    }
+
+    .ba-tag {
+      background: var(--green-light);
+      color: var(--green-dark);
+      border-radius: 4px;
+      padding: 0.1rem 0.35rem;
+      font-weight: 700;
+      font-size: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .ba-tag-line {
+      height: 7px;
+      border-radius: 3px;
+      background: #d4edda;
+      flex: 1;
+    }
+
+    /* Feature list */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .feature-item:last-child { border-bottom: none; }
+
+    .feature-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--green-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-icon-wrap svg { width: 20px; height: 20px; }
+
+    .feature-text h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .feature-text p {
+      font-size: 0.82rem;
+      color: #6b7280;
+      line-height: 1.55;
+    }
+
+    /* Two-column layout for hero section */
+    .hero-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* ── PIPELINE SECTION ── */
+    .pipeline-section {
+      padding: 3rem 0 3rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .section-title {
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .phase-card {
+      border: 1.5px solid #e5e7eb;
+      border-top: 3px solid var(--green);
+      border-radius: 10px;
+      padding: 0.85rem;
+      background: #fff;
+      position: relative;
+    }
+
+    .phase-num {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.3rem;
+    }
+
+    .phase-card h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+
+    .phase-detail {
+      font-size: 0.7rem;
+      color: #6b7280;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .phase-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--green-bg);
+      color: var(--green-dark);
+      font-size: 0.65rem;
+      font-weight: 700;
+      border-radius: 99px;
+      padding: 0.2rem 0.6rem;
+    }
+
+    .phase-big-num {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.7rem;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #f3f4f6;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* Pipeline footer stats */
+    .pipeline-footer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .pipeline-footer-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: #4b5563;
+      line-height: 1.45;
+    }
+
+    .pipeline-footer-item svg {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      margin-top: 0.05em;
+    }
+
+    /* ── SCALE SECTION ── */
+    .scale-section {
+      padding: 3rem 0 3rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .scale-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      margin-bottom: 2.5rem;
+    }
+
+    .scale-stat {
+      padding: 1rem 1.5rem 1rem 0;
+      border-right: 1px solid #e5e7eb;
+    }
+
+    .scale-stat:last-child {
+      border-right: none;
+      padding-left: 1.5rem;
+      padding-right: 0;
+    }
+
+    .scale-stat:nth-child(2) {
+      padding-left: 1.5rem;
+    }
+
+    .scale-stat .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .scale-stat .stat-desc {
+      font-size: 0.82rem;
+      color: #4b5563;
+      line-height: 1.45;
+    }
+
+    /* Supported document types */
+    .doc-types-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .doc-types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+
+    .doc-type-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.7rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .doc-type-item svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-section {
+      padding: 3rem 0 3rem;
+    }
+
+    .compare-sub {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .compare-table th {
+      text-align: left;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      border-bottom: 2px solid #e5e7eb;
+      background: #f9fafb;
+    }
+
+    .compare-table th:first-child { border-radius: 8px 0 0 0; }
+    .compare-table th:last-child { border-radius: 0 8px 0 0; color: var(--green); }
+
+    .compare-table td {
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      vertical-align: middle;
+    }
+
+    .compare-table td:first-child {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .compare-table td:last-child {
+      font-weight: 700;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+
+    .compare-table tr.row-highlight td { background: #fafafa; }
+
+    .check-yes {
+      color: var(--green);
+      font-size: 1rem;
+    }
+
+    .check-partial {
+      color: #9ca3af;
+      font-size: 1rem;
+    }
+
+    .check-no {
+      color: #ef4444;
+      font-size: 0.9rem;
+    }
+
+    .tag-highlight {
+      display: inline-block;
+      background: var(--green-bg);
+      color: var(--green-dark);
+      font-size: 0.72rem;
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 0.1rem 0.4rem;
+    }
+
+    .compare-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: #6b7280;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .compare-legend span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-two-col { grid-template-columns: 1fr; }
+      .before-after { grid-template-columns: 1fr; }
+      .pipeline-grid { grid-template-columns: 1fr 1fr; }
+      .scale-stats { grid-template-columns: 1fr; }
+      .doc-types-grid { grid-template-columns: 1fr 1fr; }
+      .pipeline-footer { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .logo-bar { padding: 0.5rem 1rem; }
+      .quick-nav { gap: 1.2rem; }
+      .nav-icon-wrap { width: 46px; height: 46px; }
+      .nav-icon-wrap svg { width: 20px; height: 20px; }
+      .pipeline-grid { grid-template-columns: 1fr; }
+      .compare-table { font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── LOGO BAR ── -->
+  <header class="logo-bar">
+    <a href="index.html" class="logo-home" aria-label="Campusmind — go to home">
+      <img
+        src="assets/logos/698f334eeb7c124d7e307f6b_aedce99fd467da7af179cacf2fe1ea3c_cm-logo-final.svg"
+        alt="Campusmind"
+      />
+    </a>
+  </header>
+
+  <!-- ── NAV ── -->
+  <section class="hero">
+    <nav class="quick-nav" aria-label="AI Workforces quick navigation">
+
+      <a href="studio.html">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/>
+            <line x1="7" y1="5" x2="17" y2="5"/>
+            <line x1="6.3" y1="6.7" x2="10.8" y2="17.3"/>
+            <line x1="17.7" y1="6.7" x2="13.2" y2="17.3"/>
+          </svg>
+        </span>
+        Studio
+      </a>
+
+      <a href="teaching-learning.html">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+            <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
+            <line x1="22" y1="10" x2="22" y2="16"/>
+          </svg>
+        </span>
+        Teaching
+      </a>
+
+      <a href="it-support.html">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11a9 9 0 0118 0"/>
+            <rect x="2" y="11" width="3" height="6" rx="1.5"/>
+            <rect x="19" y="11" width="3" height="6" rx="1.5"/>
+            <path d="M21 17v1a4 4 0 01-4 4h-3"/>
+            <circle cx="12" cy="21" r="1"/>
+          </svg>
+        </span>
+        IT Support
+      </a>
+
+      <a href="accessibility.html" class="active">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="4" r="1.5" fill="#3a7d44" stroke="none"/>
+            <line x1="12" y1="6" x2="12" y2="14"/>
+            <path d="M5 9h14"/>
+            <path d="M8 14l-2 6M16 14l2 6"/>
+          </svg>
+        </span>
+        Accessibility
+      </a>
+
+      <a href="student-recruiting.html">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="7" r="3"/>
+            <path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
+            <path d="M16 3.13a4 4 0 010 7.75"/>
+            <path d="M21 21v-2a4 4 0 00-3-3.87"/>
+          </svg>
+        </span>
+        Recruiting
+      </a>
+
+    </nav>
+  </section>
+
+  <main class="page-body">
+
+    <!-- ── HERO: Headline + Before/After + Feature List ── -->
+    <div class="hero-section">
+      <h1 class="hero-headline">Higher Ed has 10,000s of PDFs that must be<br><span>WCAG accessible.</span></h1>
+
+      <div class="hero-two-col">
+
+        <!-- LEFT: Before / After -->
+        <div class="before-after" style="grid-template-columns:1fr 1fr; margin-bottom:0;">
+          <div class="ba-panel">
+            <div class="ba-label">Before</div>
+            <div class="ba-content">
+              <div class="ba-doc-title">Formula Sheet — Final Exam</div>
+              <div class="ba-lines">
+                <div class="ba-formula">F = ma &nbsp; P = mv</div>
+                <div class="ba-line ba-line--full"></div>
+                <div class="ba-line ba-line--dark"></div>
+                <div class="ba-formula">∑F = 0 &nbsp; τ = rF sinθ</div>
+                <div class="ba-line ba-line--med"></div>
+                <div class="ba-line ba-line--full"></div>
+                <div class="ba-formula">E = mc²</div>
+                <div class="ba-line ba-line--short"></div>
+                <div class="ba-line ba-line--dark"></div>
+                <div class="ba-formula">PV = nRT</div>
+                <div class="ba-line ba-line--full"></div>
+                <div class="ba-line ba-line--med"></div>
+              </div>
+            </div>
+          </div>
+          <div class="ba-panel">
+            <div class="ba-label ba-label--after">After</div>
+            <div class="ba-content ba-content--after">
+              <div class="ba-doc-title" style="color:var(--green);">Formula Sheet — Final Exam</div>
+              <div class="ba-tagged">
+                <div class="ba-tag-row"><span class="ba-tag">H1</span><div class="ba-tag-line"></div></div>
+                <div class="ba-tag-row"><span class="ba-tag">Math</span><div class="ba-tag-line" style="width:60%"></div></div>
+                <div class="ba-tag-row"><span class="ba-tag">P</span><div class="ba-tag-line"></div></div>
+                <div class="ba-tag-row"><span class="ba-tag">Math</span><div class="ba-tag-line" style="width:50%"></div></div>
+                <div class="ba-tag-row"><span class="ba-tag">P</span><div class="ba-tag-line"></div></div>
+                <div class="ba-tag-row"><span class="ba-tag">Math</span><div class="ba-tag-line" style="width:40%"></div></div>
+                <div class="ba-tag-row"><span class="ba-tag">P</span><div class="ba-tag-line"></div></div>
+                <div class="ba-tag-row"><span class="ba-tag">Math</span><div class="ba-tag-line" style="width:55%"></div></div>
+                <div class="ba-tag-row"><span class="ba-tag">P</span><div class="ba-tag-line"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Feature list -->
+        <div class="feature-list">
+
+          <div class="feature-item">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <path d="M14 2v6h6M9 13h6M9 17h4"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h3>Remediates Individual PDF Files</h3>
+              <p>Upload any PDF, receive a fully compliant, tagged document.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+                <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h3>Remediates Entire Canvas Courses</h3>
+              <p>Batch process every PDF in a course with one click.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h3>STEM-Specialized</h3>
+              <p>Handles inline handwritten text, math &amp; chemical formulas, Cartesian coordinates.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18M9 21V9"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h3>Complex Document Support</h3>
+              <p>Photo &amp; diagram captions, complex tables, heading structure (H1–H6).</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h3>Automated Pipeline</h3>
+              <p>9-phase AI pipeline from upload to compliant PDF — no manual work.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 9-PHASE PIPELINE ── -->
+    <div class="pipeline-section">
+      <h2 class="section-title">9-Phase Automated Remediation Pipeline</h2>
+
+      <div class="pipeline-grid">
+
+        <div class="phase-card">
+          <div class="phase-num">Phase 01</div>
+          <h4>Initialization</h4>
+          <div class="phase-detail">Canvas LMS or Direct Upload<br>CosmosDB Record Creation</div>
+          <span class="phase-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
+            Instant
+          </span>
+          <div class="phase-big-num">1</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Phase 02</div>
+          <h4>File Acquisition</h4>
+          <div class="phase-detail">Azure Storage Queue + Blob<br>OAuth Authentication</div>
+          <span class="phase-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
+            10–30 sec
+          </span>
+          <div class="phase-big-num">2</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Phase 03</div>
+          <h4>Pre-Processing</h4>
+          <div class="phase-detail">Tesseract OSD<br>Rotation Fix &amp; Deskew</div>
+          <span class="phase-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><path d="M2 8l3 3 6-6"/></svg>
+            Fast
+          </span>
+          <div class="phase-big-num">3</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Phase 04</div>
+          <h4>OCR Processing</h4>
+          <div class="phase-detail">Mistral AI Integration<br>Text + Image Extraction</div>
+          <span class="phase-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
+            1–3 min
+          </span>
+          <div class="phase-big-num">4</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Phase 05</div>
+          <h4>WCAG Compliance</h4>
+          <div class="phase-detail">GPT-4o Structural Analysis<br>Initial Alt Text Generation</div>
+          <span class="phase-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
+            1–2 min
+          </span>
+          <div class="phase-big-num">5</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Phase 06</div>
+          <h4>Content Remediation</h4>
+          <div class="phase-detail">GPT-4o Vision for Complex Tables<br>LaTeX Math &amp; STEM Formulas</div>
+          <span class="phase-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
+            1–2 min
+          </span>
+          <div class="phase-big-num">6</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Phase 07</div>
+          <h4>Auto-Tagging</h4>
+          <div class="phase-detail">PDFix SDK Integration<br>H1–H6, Lists, Accessible Tags</div>
+          <span class="phase-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
+            20–40 sec
+          </span>
+          <div class="phase-big-num">7</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Phase 08</div>
+          <h4>Canvas Upload</h4>
+          <div class="phase-detail">Processed, compliant files<br>synced back to LMS automatically</div>
+          <span class="phase-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
+            Instant
+          </span>
+          <div class="phase-big-num">8</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-num">Phase 09</div>
+          <h4>Finalization</h4>
+          <div class="phase-detail">Audit Logs Generation<br>Secure Data Cleanup</div>
+          <span class="phase-badge">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
+            Instant
+          </span>
+          <div class="phase-big-num">9</div>
+        </div>
+
+      </div>
+
+      <div class="pipeline-footer">
+        <div class="pipeline-footer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Total processing time: ~6–8 minutes per document
+        </div>
+        <div class="pipeline-footer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Zero human intervention required at any phase
+        </div>
+        <div class="pipeline-footer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Handles scanned PDFs, handwritten notes, STEM
+        </div>
+        <div class="pipeline-footer-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Output is fully tagged &amp; screen-reader compatible
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCALE SECTION ── -->
+    <div class="scale-section">
+      <div class="doc-types-label">Supported Document Types</div>
+      <div class="doc-types-grid">
+
+        <div class="doc-type-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+          Handwritten notes
+        </div>
+
+        <div class="doc-type-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          STEM textbooks (math, chemistry)
+        </div>
+
+        <div class="doc-type-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <path d="M14 2v6h6"/>
+          </svg>
+          Scanned documents
+        </div>
+
+        <div class="doc-type-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+          Complex tables &amp; data
+        </div>
+
+        <div class="doc-type-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
+          </svg>
+          Diagrams &amp; charts
+        </div>
+
+        <div class="doc-type-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+            <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
+          </svg>
+          Course syllabi &amp; assignments
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── COMPARISON TABLE ── -->
+    <div class="compare-section">
+      <h2 class="section-title">CampusMind vs. Alternatives</h2>
+      <p class="compare-sub">Full-spectrum accessibility remediation — not just tagging</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>AWS Project (Open Source)</th>
+            <th>Adobe PDF Accessibility</th>
+            <th>CampusMind Agent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-highlight">
+            <td>Approach</td>
+            <td>Multi-stage</td>
+            <td>PDF Auto-tagging</td>
+            <td><span class="tag-highlight">AI Processing</span></td>
+          </tr>
+          <tr>
+            <td><strong>AI Model</strong></td>
+            <td>amazon.nova-lite</td>
+            <td>none</td>
+            <td><span class="tag-highlight">OpenAI-5.4 + Mistral</span></td>
+          </tr>
+          <tr class="row-highlight">
+            <td>Automatic PDF Tagging</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>Table Detection &amp; Tagging</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr class="row-highlight">
+            <td>Document Metadata</td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-partial">–</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>Document Security Controls</td>
+            <td><span class="check-partial">–</span></td>
+            <td><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr class="row-highlight">
+            <td>Document Reconstruction</td>
+            <td><span class="check-partial">–</span></td>
+            <td><span class="check-partial">–</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>Canvas LMS Integration</td>
+            <td><span class="check-no">✗</span></td>
+            <td><span class="check-no">✗</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr class="row-highlight">
+            <td>Textbook Photocopy Handling</td>
+            <td><span class="check-partial">–</span></td>
+            <td><span class="check-partial">–</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>Caption Generation (Diagrams)</td>
+            <td><span class="check-partial">–</span></td>
+            <td><span class="check-partial">–</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr class="row-highlight">
+            <td>Caption Generation (Handwritten)</td>
+            <td><span class="check-no">✗</span></td>
+            <td><span class="check-partial">–</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>Caption Generation (Math Formulas)</td>
+            <td><span class="check-no">✗</span></td>
+            <td><span class="check-no">✗</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="compare-legend">
+        <span><span class="check-yes">✓</span> Full support</span>
+        <span><span class="check-partial">–</span> Partial support</span>
+        <span><span class="check-no">✗</span> Not supported</span>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

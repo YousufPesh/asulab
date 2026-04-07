@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Support — Campusmind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #3a8a94;
+      --teal-dark: #2d7079;
+      --teal-bg: #eef7f8;
+      --teal-light: #d8eff2;
+      --navy: #1a2d42;
+      --subhead: #6b7280;
+      --page-bg: #fff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #111827;
+      background: var(--page-bg);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── LOGO BAR ── */
+    .logo-bar {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-home {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .logo-home img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ── HERO (contains nav) ── */
+    .hero {
+      background: #f9fafb;
+      padding: 2rem 2rem 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── QUICK NAV — lives inside hero ── */
+    .quick-nav {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .quick-nav a {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      transition: color 0.15s;
+      white-space: nowrap;
+      padding-bottom: 0.75rem;
+    }
+
+    .quick-nav a:hover {
+      color: var(--teal);
+    }
+
+    .quick-nav a:hover .nav-icon-wrap {
+      background: #c8e8ec;
+    }
+
+    .quick-nav a.active {
+      color: var(--navy);
+    }
+
+    .nav-icon-wrap {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #ebebf0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+
+    .quick-nav a.active .nav-icon-wrap {
+      background: #fff;
+      box-shadow: 0 0 0 3px var(--teal);
+    }
+
+    .nav-icon-wrap svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .page-body {
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 1.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ── TIER SECTION (two-column) ── */
+    .tier-section {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 3rem;
+      padding: 3.5rem 0 3rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .tier-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .tier-label {
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      font-weight: 800;
+      color: var(--teal);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .tier-sub-label {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .tier-desc {
+      font-size: 0.88rem;
+      color: #4b5563;
+      line-height: 1.65;
+      max-width: 320px;
+    }
+
+    /* ── FEATURE LIST (right column) ── */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .feature-item:last-child {
+      border-bottom: none;
+    }
+
+    .feature-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--teal-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-icon-wrap svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .feature-text h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+
+    .feature-text p {
+      font-size: 0.88rem;
+      color: #6b7280;
+      line-height: 1.55;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section {
+      padding: 3rem 0 3rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: #6b7280;
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .how-steps::before {
+      content: "";
+      position: absolute;
+      top: 28px;
+      left: calc(100% / 8);
+      right: calc(100% / 8);
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal) 0%, #a8d8dd 100%);
+      z-index: 0;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 0 0 6px var(--teal-light);
+    }
+
+    .step h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+
+    .step p {
+      font-size: 0.78rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    /* ── INTEGRATION STRIP ── */
+    .integrations-section {
+      background: var(--teal-bg);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      margin: 2.5rem 0;
+    }
+
+    .integrations-section .section-title {
+      margin-bottom: 1.2rem;
+    }
+
+    .integrations-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .int-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #fff;
+      border: 1.5px solid #b3d9de;
+      border-radius: 99px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .int-chip .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ── ARCHITECTURE FLOW ── */
+    .arch-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1.2fr auto 1fr;
+      gap: 0;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .arch-col {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .arch-col--dark {
+      border: 1.5px solid #d1d5db;
+    }
+
+    .arch-col--teal {
+      border: 2px solid var(--teal);
+      box-shadow: 0 4px 20px rgba(58,138,148,0.15);
+    }
+
+    .arch-col--gray {
+      border: 1.5px solid #d1d5db;
+    }
+
+    .arch-col-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 0.9rem;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .arch-col-header--teal {
+      background: var(--teal);
+    }
+
+    .arch-col-header--gray {
+      background: #6b7280;
+    }
+
+    .arch-col-body {
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+      background: #fff;
+    }
+
+    .arch-channel-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: #fff;
+    }
+
+    .arch-channel-item--teal {
+      border-color: var(--teal-light);
+    }
+
+    .arch-agent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+      background: #fff;
+    }
+
+    .agent-row-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1.2;
+    }
+
+    .agent-row-sub {
+      font-size: 0.68rem;
+      color: #6b7280;
+      margin-top: 0.15rem;
+    }
+
+    .arch-arrow-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0 0.75rem;
+    }
+
+    .arch-arrow-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      white-space: nowrap;
+    }
+
+    /* Bottom callouts */
+    .arch-callouts {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .arch-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .arch-callout-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--teal-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .arch-callout-text h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+
+    .arch-callout-text p {
+      font-size: 0.78rem;
+      color: #6b7280;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 900px) {
+      .arch-flow {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto;
+      }
+      .arch-arrow-wrap { flex-direction: row; padding: 0.5rem 0; }
+      .arch-callouts { grid-template-columns: 1fr; }
+    }
+
+    /* ── ARCHITECTURE SECTION ── */
+    .arch-section {
+      padding: 3rem 0 3rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .arch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .arch-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .arch-actors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .arch-actor-box {
+      border: 1.5px solid #d1d5db;
+      border-radius: 10px;
+      padding: 0.65rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #fff;
+    }
+
+    .arch-actor-box svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .arch-actor-box .actor-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .arch-actor-box .actor-sub {
+      font-size: 0.65rem;
+      color: #6b7280;
+      margin-top: 0.1rem;
+    }
+
+    .arch-actor-box--servicenow {
+      border-color: #6ee7b7;
+    }
+
+    .arch-layer {
+      border: 2px solid var(--teal);
+      border-radius: 12px;
+      padding: 1rem;
+      background: #fff;
+    }
+
+    .arch-layer-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .arch-layer-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .arch-layer-row {
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      background: #fafafa;
+    }
+
+    .arch-layer-row svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 0.1em;
+    }
+
+    .arch-layer-row .row-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .arch-layer-row .row-sub {
+      font-size: 0.68rem;
+      color: #6b7280;
+      margin-top: 0.1rem;
+    }
+
+    .arch-bottom-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .arch-bottom-box {
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 0.65rem 0.8rem;
+      background: #fff;
+    }
+
+    .arch-bottom-box--teal {
+      border-left: 3px solid var(--teal);
+    }
+
+    .arch-bottom-box--green {
+      border-left: 3px solid #10b981;
+    }
+
+    .arch-bottom-box .bb-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .arch-bottom-box .bb-sub {
+      font-size: 0.65rem;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+
+    /* Arch Principles */
+    .arch-principles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .arch-principles-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.1rem;
+    }
+
+    .principle-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .principle-item:last-child {
+      border-bottom: none;
+    }
+
+    .principle-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .principle-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .principle-text h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .principle-text p {
+      font-size: 0.75rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    /* ── IMPACT SECTION ── */
+    .impact-section-wrap {
+      padding: 3rem 0 3rem;
+    }
+
+    .impact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .impact-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .impact-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .impact-stat:last-child {
+      border-bottom: none;
+    }
+
+    .impact-stat .stat-number {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--teal);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 5rem;
+    }
+
+    .impact-stat .stat-desc {
+      font-size: 0.9rem;
+      color: #4b5563;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    /* Analytics Dashboard */
+    .impact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .analytics-box {
+      border: 1.5px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .analytics-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.1rem;
+      border-bottom: 2px solid var(--navy);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .analytics-header svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--teal);
+    }
+
+    .analytics-rows {
+      padding: 0.75rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .analytics-row-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.35rem;
+    }
+
+    .analytics-row-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .analytics-row-pct {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    .analytics-bar-track {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .analytics-bar-fill {
+      height: 100%;
+      background: var(--teal);
+      border-radius: 99px;
+    }
+
+    .roi-box {
+      border: 1.5px solid #e5e7eb;
+      border-left: 4px solid var(--teal);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+      background: #fff;
+    }
+
+    .roi-box h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .roi-box p {
+      font-size: 0.82rem;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .impact-section-title {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .impact-section { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ── COMPLIANCE STRIP ── */
+    .compliance-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 1.5rem;
+      background: #f9fafb;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 14px;
+      margin-bottom: 2.5rem;
+    }
+
+    .compliance-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      text-align: center;
+    }
+
+    .compliance-item svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .compliance-item span {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #374151;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── SHOWCASE ── */
+    .showcase {
+      background: linear-gradient(135deg, #1a2d42 0%, #2d3f5e 100%);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .showcase-text {
+      flex: 1 1 260px;
+      min-width: 0;
+    }
+
+    .showcase-text .section-label {
+      color: #8dd1d8;
+    }
+
+    .showcase-text .section-title {
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .showcase-text p {
+      font-size: 0.88rem;
+      color: #9ca3af;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .showcase-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .showcase-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: #e5e7eb;
+      line-height: 1.45;
+    }
+
+    .showcase-points li svg {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      margin-top: 0.05em;
+    }
+
+    .showcase-visual {
+      flex: 1 1 380px;
+      min-width: 0;
+      max-width: 520px;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+
+    .mock-browser-bar {
+      background: #f3f4f6;
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .mock-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .mock-dot--red   { background: #fc5e57; }
+    .mock-dot--yellow{ background: #febc2e; }
+    .mock-dot--green { background: #28c840; }
+
+    .mock-url {
+      flex: 1;
+      background: #fff;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.7rem;
+      color: #6b7280;
+      margin-left: 0.4rem;
+    }
+
+    .mock-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .mock-chat-bubble {
+      max-width: 85%;
+      border-radius: 10px;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+
+    .mock-chat-bubble--user {
+      background: var(--teal);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 3px;
+    }
+
+    .mock-chat-bubble--agent {
+      background: #f3f4f6;
+      color: #1f2937;
+      align-self: flex-start;
+      border-bottom-left-radius: 3px;
+    }
+
+    .mock-agent-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 0.15rem;
+    }
+
+    @media (max-width: 768px) {
+      .tier-section { grid-template-columns: 1fr; gap: 1.5rem; }
+      .arch-grid { grid-template-columns: 1fr; }
+      .arch-actors { grid-template-columns: 1fr; }
+      .arch-bottom-row { grid-template-columns: 1fr; }
+      .impact-section { grid-template-columns: 1fr; }
+      .impact-divider { height: 3px; width: 100%; margin: 1.5rem 0; }
+      .impact-stats { padding-right: 0; }
+      .impact-right { padding-left: 0; }
+      .how-steps { grid-template-columns: 1fr 1fr; }
+      .how-steps::before { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .logo-bar { padding: 0.5rem 1rem; }
+      .quick-nav { gap: 1.2rem; }
+      .nav-icon-wrap { width: 46px; height: 46px; }
+      .nav-icon-wrap svg { width: 20px; height: 20px; }
+      .quick-nav a { font-size: 0.7rem; }
+      .how-steps { grid-template-columns: 1fr; }
+      .showcase { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── LOGO BAR ── -->
+  <header class="logo-bar">
+    <a href="index.html" class="logo-home" aria-label="Campusmind — go to home">
+      <img
+        src="assets/logos/698f334eeb7c124d7e307f6b_aedce99fd467da7af179cacf2fe1ea3c_cm-logo-final.svg"
+        alt="Campusmind"
+      />
+    </a>
+  </header>
+
+  <!-- ── HERO (with nav inside) ── -->
+  <section class="hero">
+    <nav class="quick-nav" aria-label="AI Workforces quick navigation">
+
+      <!-- Studio -->
+      <a href="studio.html">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/>
+            <line x1="7" y1="5" x2="17" y2="5"/>
+            <line x1="6.3" y1="6.7" x2="10.8" y2="17.3"/>
+            <line x1="17.7" y1="6.7" x2="13.2" y2="17.3"/>
+          </svg>
+        </span>
+        Studio
+      </a>
+
+      <!-- Teaching -->
+      <a href="teaching-learning.html">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+            <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
+            <line x1="22" y1="10" x2="22" y2="16"/>
+          </svg>
+        </span>
+        Teaching
+      </a>
+
+      <!-- IT Support: active -->
+      <a href="it-support.html" class="active">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11a9 9 0 0118 0"/>
+            <rect x="2" y="11" width="3" height="6" rx="1.5"/>
+            <rect x="19" y="11" width="3" height="6" rx="1.5"/>
+            <path d="M21 17v1a4 4 0 01-4 4h-3"/>
+            <circle cx="12" cy="21" r="1"/>
+          </svg>
+        </span>
+        IT Support
+      </a>
+
+      <!-- Accessibility -->
+      <a href="accessibility.html">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="4" r="1.5" fill="#9ca3af" stroke="none"/>
+            <line x1="12" y1="6" x2="12" y2="14"/>
+            <path d="M5 9h14"/>
+            <path d="M8 14l-2 6M16 14l2 6"/>
+          </svg>
+        </span>
+        Accessibility
+      </a>
+
+      <!-- Recruiting -->
+      <a href="student-recruiting.html">
+        <span class="nav-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="7" r="3"/>
+            <path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
+            <path d="M16 3.13a4 4 0 010 7.75"/>
+            <path d="M21 21v-2a4 4 0 00-3-3.87"/>
+          </svg>
+        </span>
+        Recruiting
+      </a>
+
+    </nav>
+  </section>
+
+  <main class="page-body">
+
+    <!-- ── TIER 1 SECTION ── -->
+    <div class="tier-section">
+
+      <!-- LEFT: Tier label + description -->
+      <div class="tier-left">
+        <div class="tier-label">Tier 1</div>
+        <div class="tier-sub-label">Fully Automated</div>
+        <p class="tier-desc">CampusMind's IT Support Agents intercept, troubleshoot, and resolve common student and faculty issues before a human ticket is ever created.</p>
+      </div>
+
+      <!-- RIGHT: Feature list -->
+      <div class="feature-list">
+
+        <div class="feature-item">
+          <div class="feature-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 2H3v16h5l3 3 3-3h7V2z"/>
+              <path d="M7 8h10M7 12h7"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Multi-Channel Triage</h3>
+            <p>Deploy agents where users already are: Microsoft Teams, Slack, Email, or the University Portal.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+              <line x1="12" y1="12" x2="12" y2="16"/>
+              <line x1="10" y1="14" x2="14" y2="14"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>ServiceNow &amp; Jira Integration</h3>
+            <p>Reads existing tickets, updates statuses, and creates detailed logs via native MCP connectors.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <path d="M14 2v6h6M9 13h6M9 17h4"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Knowledge Base Grounding</h3>
+            <p>Answers are strictly generated from your institution's approved IT documentation and policies.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Automated Workflows</h3>
+            <p>Executes password resets, software access requests, and Wi-Fi troubleshooting autonomously.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+              <path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Seamless Human Handoff</h3>
+            <p>Escalates complex issues to Tier 2 human agents with full context and chat history attached.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── HOW IT WORKS ── -->
+    <div class="how-section">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">Resolving tickets before they're created</h2>
+      <p class="section-sub">The IT Support Agent intercepts user requests across every channel, resolves them automatically, and only escalates when a human is truly needed.</p>
+
+      <div class="how-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>User submits issue</h4>
+          <p>Via Teams, Slack, Email, or the university portal — the agent intercepts instantly.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>Agent triages &amp; classifies</h4>
+          <p>The request is categorized, matched against the knowledge base, and a resolution path is selected.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>Automated resolution</h4>
+          <p>Password resets, access requests, and common fixes are executed without human involvement.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h4>Ticket created or closed</h4>
+          <p>Resolved issues are logged; unresolved ones are handed off to Tier 2 with full context.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── INTEGRATIONS ── -->
+    <div class="integrations-section">
+      <p class="section-label">Integrations</p>
+      <h2 class="section-title">Connects to your existing IT stack</h2>
+      <div class="integrations-list">
+        <span class="int-chip"><span class="dot"></span>ServiceNow</span>
+        <span class="int-chip"><span class="dot"></span>Jira Service Management</span>
+        <span class="int-chip"><span class="dot"></span>Microsoft Teams</span>
+        <span class="int-chip"><span class="dot"></span>Slack</span>
+        <span class="int-chip"><span class="dot"></span>Microsoft 365</span>
+        <span class="int-chip"><span class="dot"></span>Okta</span>
+        <span class="int-chip"><span class="dot"></span>Azure Active Directory</span>
+        <span class="int-chip"><span class="dot"></span>Google Workspace</span>
+        <span class="int-chip"><span class="dot"></span>Cisco Meraki</span>
+        <span class="int-chip"><span class="dot"></span>Jamf Pro</span>
+      </div>
+    </div>
+
+    <!-- ── COMPLIANCE STRIP ── -->
+    <div class="compliance-strip">
+      <div class="compliance-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>SOC 2 Type II</span>
+      </div>
+      <div class="compliance-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+        <span>FERPA</span>
+      </div>
+      <div class="compliance-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        <span>Azure OpenAI</span>
+      </div>
+      <div class="compliance-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+        </svg>
+        <span>HECVAT</span>
+      </div>
+      <div class="compliance-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="5" r="2.2"/>
+          <path d="M5 20v-3a4 4 0 014-4h6a4 4 0 014 4v3"/>
+          <path d="M2 11h4M18 11h4M12 8v4"/>
+        </svg>
+        <span>WCAG 2.1 AA</span>
+      </div>
+    </div>
+
+    <!-- ── ARCHITECTURE ── -->
+    <div class="arch-section">
+      <h2 class="section-title" style="margin-bottom:1.75rem;">How the IT Support Agent Works</h2>
+
+      <!-- Three-column flow diagram -->
+      <div class="arch-flow">
+
+        <!-- Column 1: User Channels -->
+        <div class="arch-col arch-col--dark">
+          <div class="arch-col-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+              <path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+            <span>User Channels</span>
+          </div>
+          <div class="arch-col-body">
+            <div class="arch-channel-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+              <span>Microsoft Teams</span>
+            </div>
+            <div class="arch-channel-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.93.07 4.28 4.28 0 004 2.98 8.521 8.521 0 01-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+              </svg>
+              <span>Slack</span>
+            </div>
+            <div class="arch-channel-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+              </svg>
+              <span>Support Portal</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="arch-arrow-wrap">
+          <div class="arch-arrow-label">Natural Language</div>
+          <svg viewBox="0 0 40 24" fill="none" width="40" height="24">
+            <path d="M2 12h32M26 5l8 7-8 7" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Column 2: CampusMind IT Agent (center, highlighted) -->
+        <div class="arch-col arch-col--teal">
+          <div class="arch-col-header arch-col-header--teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+              <rect x="3" y="11" width="18" height="10" rx="2"/>
+              <path d="M9 11V7a3 3 0 016 0v4"/>
+              <circle cx="12" cy="16" r="1" fill="#fff"/>
+            </svg>
+            <span>CampusMind IT Agent</span>
+          </div>
+          <div class="arch-col-body">
+            <div class="arch-agent-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
+                <path d="M12 8v4l3 3"/>
+              </svg>
+              <div>
+                <div class="agent-row-title">Intent Recognition</div>
+                <div class="agent-row-sub">Azure OpenAI parses request context</div>
+              </div>
+            </div>
+            <div class="arch-agent-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+              </svg>
+              <div>
+                <div class="agent-row-title">Knowledge Retrieval</div>
+                <div class="agent-row-sub">Vector search across IT documentation</div>
+              </div>
+            </div>
+            <div class="arch-agent-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
+              </svg>
+              <div>
+                <div class="agent-row-title">Action Execution</div>
+                <div class="agent-row-sub">MCP Servers trigger API workflows</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="arch-arrow-wrap">
+          <div class="arch-arrow-label">API / Webhooks</div>
+          <svg viewBox="0 0 40 24" fill="none" width="40" height="24">
+            <path d="M2 12h32M26 5l8 7-8 7" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Column 3: ITSM Systems -->
+        <div class="arch-col arch-col--gray">
+          <div class="arch-col-header arch-col-header--gray">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+            </svg>
+            <span>ITSM Systems</span>
+          </div>
+          <div class="arch-col-body">
+            <div class="arch-channel-item arch-channel-item--teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+                <line x1="12" y1="12" x2="12" y2="16"/>
+                <line x1="10" y1="14" x2="14" y2="14"/>
+              </svg>
+              <span>ServiceNow</span>
+            </div>
+            <div class="arch-channel-item arch-channel-item--teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+              <span>Jira Service Management</span>
+            </div>
+            <div class="arch-channel-item arch-channel-item--teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <path d="M3 11a9 9 0 0118 0"/>
+                <rect x="2" y="11" width="3" height="6" rx="1.5"/>
+                <rect x="19" y="11" width="3" height="6" rx="1.5"/>
+              </svg>
+              <span>Freshservice</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom three callouts -->
+      <div class="arch-callouts">
+
+        <div class="arch-callout">
+          <div class="arch-callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+            </svg>
+          </div>
+          <div class="arch-callout-text">
+            <h4>Auto-Triage</h4>
+            <p>Automatically categorizes, prioritizes, and routes complex issues to the correct human IT queue if unresolved.</p>
+          </div>
+        </div>
+
+        <div class="arch-callout">
+          <div class="arch-callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <div class="arch-callout-text">
+            <h4>Zero-Touch Resolution</h4>
+            <p>Executes workflows like password resets, software provisioning, and access requests without human intervention.</p>
+          </div>
+        </div>
+
+        <div class="arch-callout">
+          <div class="arch-callout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+              <path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <div class="arch-callout-text">
+            <h4>Seamless Handoff</h4>
+            <p>When human help is needed, the agent creates a ticket with full chat history and diagnostic context attached.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ── MEASURABLE IMPACT ── -->
+    <div class="impact-section-wrap">
+      <h2 class="impact-section-title">Deflect Tickets. Save Hours.<br>Improve Service.</h2>
+      <div class="impact-section">
+
+        <!-- LEFT: Big stats -->
+        <div class="impact-stats">
+          <div class="impact-stat">
+            <span class="stat-number">40%+</span>
+            <span class="stat-desc">of Tier 1 tickets deflected automatically</span>
+          </div>
+          <div class="impact-stat">
+            <span class="stat-number">24/7</span>
+            <span class="stat-desc">instant resolution for common IT issues</span>
+          </div>
+          <div class="impact-stat">
+            <span class="stat-number">100s</span>
+            <span class="stat-desc">of hours saved per week for IT staff</span>
+          </div>
+          <div class="impact-stat">
+            <span class="stat-number">0</span>
+            <span class="stat-desc">new platforms for users to learn (works in existing portals)</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Analytics dashboard -->
+        <div class="impact-right">
+
+          <div class="analytics-box">
+            <div class="analytics-header">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              Live Analytics Dashboard
+            </div>
+            <div class="analytics-rows">
+
+              <div>
+                <div class="analytics-row-label">
+                  <span class="analytics-row-name">Password Resets &amp; Account Access</span>
+                  <span class="analytics-row-pct">95% Automated</span>
+                </div>
+                <div class="analytics-bar-track">
+                  <div class="analytics-bar-fill" style="width:95%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="analytics-row-label">
+                  <span class="analytics-row-name">Wi-Fi &amp; Network Connectivity</span>
+                  <span class="analytics-row-pct">70% Automated</span>
+                </div>
+                <div class="analytics-bar-track">
+                  <div class="analytics-bar-fill" style="width:70%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="analytics-row-label">
+                  <span class="analytics-row-name">LMS &amp; Software Access Issues</span>
+                  <span class="analytics-row-pct">80% Automated</span>
+                </div>
+                <div class="analytics-bar-track">
+                  <div class="analytics-bar-fill" style="width:80%"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="roi-box">
+            <h4>The ROI of AI Triage</h4>
+            <p>By resolving repetitive, high-volume requests instantly, CampusMind frees your IT staff to focus on complex infrastructure projects, security, and high-touch faculty support.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campusmind — One Platform. Five AI Workforces.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy-heading: #1a2d42;
+      --subhead: #6b7280;
+      --orange: #e46d2e;
+      --orange-bg: #fff5ed;
+      --purple: #7b43d1;
+      --purple-bg: #f5f0ff;
+      --teal: #2d8f9a;
+      --teal-bg: #e8f7f8;
+      --green: #439b49;
+      --green-bg: #eef8ef;
+      --indigo: #6d42d1;
+      --indigo-bg: #f3f0fc;
+      --page-bg: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #111827;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: var(--page-bg);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    main {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 clamp(0.25rem, 1.2vw, 1rem) 0.2rem;
+      gap: 0.3rem;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .site-header {
+      flex-shrink: 0;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(0.3rem, 1.1vmin, 0.65rem) clamp(0.25rem, 1.2vw, 1rem) clamp(0.2rem, 0.8vmin, 0.5rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(0.25rem, 0.9vmin, 0.5rem);
+      width: 100%;
+    }
+
+    .header-text {
+      text-align: center;
+      min-width: 0;
+      width: 100%;
+      max-width: 42rem;
+    }
+
+    .header-text h1 {
+      font-size: clamp(0.52rem, 2.3vmin + 0.2rem, 1.55rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--navy-heading);
+      line-height: 1.18;
+      white-space: nowrap;
+    }
+
+    .header-text .subhead {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 0.4em;
+      margin-top: 0.2rem;
+      font-size: clamp(0.68rem, 2.2vmin + 0.15rem, 1.05rem);
+      font-weight: 600;
+      color: var(--subhead);
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+
+    .subhead--secondary {
+      margin-top: 0.1rem;
+    }
+
+    .subhead-azure {
+      display: block;
+      height: 2.4em;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .logo-wordmark {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
+      width: 100%;
+    }
+
+    .logo-wordmark img {
+      display: block;
+      height: clamp(22px, 6.5vmin, 48px);
+      width: auto;
+      max-width: min(200px, 72vw);
+      object-fit: contain;
+    }
+
+    /* 2×2 grid; 5th card flows to row 3, column 1 */
+    .workforces {
+      flex: 0 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: clamp(0.25rem, 1vmin, 0.55rem);
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .wf-col {
+      min-width: 0;
+      padding: clamp(0.28rem, 1vmin, 0.55rem) clamp(0.2rem, 0.8vmin, 0.45rem) clamp(0.32rem, 1vmin, 0.6rem);
+      border-radius: clamp(6px, 1.2vmin, 12px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: flex-start;
+      cursor: pointer;
+      text-decoration: none;
+      transition: filter 0.15s, transform 0.15s;
+    }
+
+    .wf-col:hover {
+      filter: brightness(0.96);
+      transform: translateY(-2px);
+    }
+
+    .wf-icon {
+      width: clamp(24px, 6vmin, 44px);
+      height: clamp(24px, 6vmin, 44px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: clamp(0.15rem, 0.6vmin, 0.45rem);
+    }
+
+    .wf-icon svg {
+      width: clamp(12px, 3vmin, 22px);
+      height: clamp(12px, 3vmin, 22px);
+      fill: #fff;
+    }
+
+    .wf-title {
+      font-size: clamp(0.48rem, 1.65vmin + 0.15rem, 0.88rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+      margin-bottom: clamp(0.18rem, 0.7vmin, 0.5rem);
+    }
+
+    .wf-list {
+      list-style: none;
+      width: fit-content;
+      margin: 0 auto;
+      text-align: left;
+      padding: 0;
+    }
+
+    .wf-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.18rem;
+      font-size: clamp(0.4rem, 1.35vmin + 0.1rem, 0.78rem);
+      font-weight: 500;
+      color: #374151;
+      line-height: 1.3;
+      margin-bottom: clamp(0.1rem, 0.45vmin, 0.35rem);
+    }
+
+    .wf-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .wf-list .check {
+      flex-shrink: 0;
+      width: clamp(8px, 2vmin, 12px);
+      height: clamp(8px, 2vmin, 12px);
+      margin-top: 0.1em;
+    }
+
+    .wf-col--orange {
+      background: var(--orange-bg);
+    }
+    .wf-col--orange .wf-icon {
+      background: var(--orange);
+    }
+    .wf-col--orange .wf-title {
+      color: var(--orange);
+    }
+    .wf-col--orange .wf-list .check {
+      color: var(--orange);
+    }
+
+    .wf-col--purple {
+      background: var(--purple-bg);
+    }
+    .wf-col--purple .wf-icon {
+      background: var(--purple);
+    }
+    .wf-col--purple .wf-title {
+      color: var(--purple);
+    }
+    .wf-col--purple .wf-list .check {
+      color: var(--purple);
+    }
+
+    .wf-col--teal {
+      background: var(--teal-bg);
+    }
+    .wf-col--teal .wf-icon {
+      background: var(--teal);
+    }
+    .wf-col--teal .wf-title {
+      color: var(--teal);
+    }
+    .wf-col--teal .wf-list .check {
+      color: var(--teal);
+    }
+
+    .wf-col--green {
+      background: var(--green-bg);
+    }
+    .wf-col--green .wf-icon {
+      background: var(--green);
+    }
+    .wf-col--green .wf-title {
+      color: var(--green);
+    }
+    .wf-col--green .wf-list .check {
+      color: var(--green);
+    }
+
+    .wf-col--indigo {
+      background: var(--indigo-bg);
+    }
+    .wf-col--indigo .wf-icon {
+      background: var(--indigo);
+    }
+    .wf-col--indigo .wf-title {
+      color: var(--indigo);
+    }
+    .wf-col--indigo .wf-list .check {
+      color: var(--indigo);
+    }
+
+    .clients-band {
+      flex-shrink: 0;
+      flex: 0 0 auto;
+      padding: clamp(0.15rem, 0.6vmin, 0.45rem) 0 clamp(0.2rem, 0.8vmin, 0.55rem);
+      background: var(--page-bg);
+    }
+
+    .clients-card {
+      max-width: none;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #e2e4e8;
+      border-radius: clamp(6px, 1.2vmin, 14px);
+      padding: clamp(0.28rem, 1vmin, 0.65rem) clamp(0.3rem, 1.2vmin, 1rem) clamp(0.3rem, 1vmin, 0.7rem);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .clients-title {
+      text-align: center;
+      font-size: clamp(0.48rem, 1.6vmin + 0.12rem, 0.95rem);
+      font-weight: 700;
+      color: #1f2937;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .clients-rows {
+      margin-top: clamp(0.18rem, 0.7vmin, 0.45rem);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: clamp(0.12rem, 0.5vmin, 0.35rem);
+    }
+
+    .clients-row {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .clients-row--three {
+      justify-content: space-around;
+      gap: clamp(0.2rem, 1.5vmin, 0.75rem);
+      flex-wrap: nowrap;
+    }
+
+    .clients-row--three .client-logo {
+      flex: 1 1 0;
+      min-width: 0;
+      justify-content: center;
+    }
+
+    .clients-row--two {
+      justify-content: space-between;
+      gap: clamp(0.5rem, 3vmin, 2rem);
+      flex-wrap: nowrap;
+    }
+
+    .clients-row--two .client-logo {
+      flex: 0 1 auto;
+      min-width: 0;
+      justify-content: center;
+    }
+
+    .client-logo {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .client-logo img {
+      display: block;
+      height: clamp(28px, 6vmin, 72px);
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .azure-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: clamp(0.3rem, 1vmin, 0.6rem) 0;
+    }
+
+    .azure-badge__text {
+      font-size: clamp(0.85rem, 2.8vmin + 0.2rem, 1.4rem);
+      font-weight: 700;
+      color: var(--navy-heading);
+      white-space: nowrap;
+      margin-right: 0.35em;
+    }
+
+    .azure-badge__logo {
+      display: block;
+      height: clamp(1.4rem, 4.5vmin + 0.3rem, 2.8rem);
+      width: auto;
+      object-fit: contain;
+      object-position: left center;
+      /* crop extra whitespace on the right side of the Azure logo image */
+      max-width: clamp(5rem, 16vmin + 1rem, 10rem);
+    }
+
+    .wf-col--span2 {
+      grid-column: 1 / -1;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .wf-list--row {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+      margin-top: 0;
+      width: auto;
+      text-align: left;
+    }
+
+    .wf-list--row li {
+      margin-bottom: 0;
+    }
+
+    /* Short/tight viewports: allow headline to wrap */
+    @media (max-width: 720px), (max-height: 560px) {
+      .header-text h1 {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-wordmark">
+      <a href="index.html" aria-label="Campusmind — home" style="display:inline-flex;line-height:0;">
+        <img
+          src="assets/logos/698f334eeb7c124d7e307f6b_aedce99fd467da7af179cacf2fe1ea3c_cm-logo-final.svg"
+          width="220"
+          height="48"
+          alt="Campusmind"
+        />
+      </a>
+    </div>
+    <div class="header-text">
+      <h1>One Platform. Five AI Workforces.</h1>
+      <p class="subhead subhead--secondary">
+        Deployed inside your university's secure environment
+      </p>
+    </div>
+  </header>
+
+  <main>
+  <section class="workforces" aria-label="Five AI workforces">
+    <!-- Row 1: Student Recruiting | Teaching & Learning -->
+    <a href="student-recruiting.html" class="wf-col wf-col--indigo" role="article" aria-label="Student Recruiting Workforce — learn more">
+      <div class="wf-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+          <circle cx="8" cy="9" r="2.3" />
+          <circle cx="16" cy="9" r="2.3" />
+          <circle cx="12" cy="6" r="2.3" />
+          <path d="M4 19c0-2.5 2-4.5 4.5-4.5h7c2.5 0 4.5 2 4.5 4.5v1H4v-1z" opacity="0.95" />
+        </svg>
+      </div>
+      <h2 class="wf-title">Student Recruiting</h2>
+      <ul class="wf-list">
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          Course &amp; career advising
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          Transfer articulation
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          Slate, Workday, Salesforce integration
+        </li>
+      </ul>
+    </a>
+
+    <a href="teaching-learning.html" class="wf-col wf-col--purple" role="article" aria-label="Teaching &amp; Learning — learn more">
+      <div class="wf-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+          <path d="M12 3.5L3.5 8v2.5h17V8L12 3.5z" />
+          <path d="M7.5 10.5V16c0 2.2 2 4 4.5 4s4.5-1.8 4.5-4v-5.5" fill="none" stroke="#fff" stroke-width="1.65" stroke-linecap="round" />
+        </svg>
+      </div>
+      <h2 class="wf-title">Teaching &amp; Learning</h2>
+      <ul class="wf-list">
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          Virtual TAs in Canvas, Blackboard, Brightspace
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          LTI integration
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          FERPA compliant
+        </li>
+      </ul>
+    </a>
+
+    <!-- Row 2: IT Support | Accessibility -->
+    <a href="it-support.html" class="wf-col wf-col--teal" role="article" aria-label="IT Support Workforce — learn more">
+      <div class="wf-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#fff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 11.5v5a2 2 0 002 2h1.5" />
+          <path d="M19 11.5v5a2 2 0 01-2 2h-1.5" />
+          <path d="M5 11.5a7 7 0 0114 0" />
+          <path d="M9 20.5h6" />
+        </svg>
+      </div>
+      <h2 class="wf-title">IT Support Workforce</h2>
+      <ul class="wf-list">
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          AI triage agents
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          ServiceNow integration
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          2FA account reset
+        </li>
+      </ul>
+    </a>
+
+    <a href="accessibility.html" class="wf-col wf-col--green" role="article" aria-label="Accessibility AI Workforce — learn more">
+      <div class="wf-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="5" r="2.2" />
+          <path d="M5 20v-3a4 4 0 014-4h6a4 4 0 014 4v3" />
+          <path d="M2 11h4M18 11h4M12 8v4" />
+        </svg>
+      </div>
+      <h2 class="wf-title">Accessibility AI Workforce</h2>
+      <ul class="wf-list">
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          WCAG 2.1 AA PDF remediation
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          Full Canvas course remediation
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          Handles STEM content
+        </li>
+      </ul>
+    </a>
+
+    <!-- Row 3: AI Workforce Studio spanning both columns -->
+    <article class="wf-col wf-col--orange wf-col--span2">
+      <div class="wf-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="#fff">
+          <circle cx="12" cy="5" r="2.8" />
+          <circle cx="5" cy="14" r="2.8" />
+          <circle cx="19" cy="14" r="2.8" />
+          <path d="M10.2 7.2L6.8 11.8M13.8 7.2L17.2 11.8M8.5 14h7" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </div>
+      <h2 class="wf-title">AI Workforce Studio</h2>
+      <ul class="wf-list wf-list--row">
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          No-code agent builder
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          2,000+ connectors
+        </li>
+        <li>
+          <svg class="check" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L6.5 11.5 2.5 7.5" /></svg>
+          Enterprise security
+        </li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="clients-band" aria-labelledby="clients-heading">
+    <div class="clients-card">
+      <h2 id="clients-heading" class="clients-title">Our Clients</h2>
+      <div class="clients-rows">
+        <div class="clients-row clients-row--three">
+          <div class="client-logo">
+            <img src="assets/logos/uchi.png" width="320" height="64" alt="The University of Chicago" />
+          </div>
+          <div class="client-logo">
+            <img src="assets/logos/Carlson.jpg" width="340" height="72" alt="Carlson School of Management, University of Minnesota" />
+          </div>
+          <div class="client-logo">
+            <img src="assets/logos/roosevelt.png" width="300" height="70" alt="Roosevelt University" />
+          </div>
+        </div>
+        <div class="clients-row clients-row--two">
+          <div class="client-logo">
+            <img src="assets/logos/AdTalem_logo_RGB_051617.jpg" width="320" height="64" alt="Adtalem Global Education" />
+          </div>
+          <div class="client-logo">
+            <img src="assets/logos/booth.png" width="300" height="72" alt="Chicago Booth School of Business" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="azure-badge">
+    <span class="azure-badge__text">Built on</span>
+    <img
+      class="azure-badge__logo"
+      src="assets/logos/blog-azure-logo.png"
+      width="300"
+      height="60"
+      alt="Microsoft Azure"
+      decoding="async"
+    />
+  </div>
+  </main>
+</body>
+</html>
