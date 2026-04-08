@@ -50,7 +50,6 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      background: #fff;
       text-decoration: none;
       color: inherit;
       box-shadow: 0 2px 16px rgba(0,0,0,0.09);
@@ -63,17 +62,15 @@
       box-shadow: 0 10px 28px rgba(0,0,0,0.14);
     }
 
-    /* Text header — white bg, compact */
+    /* Text header — matches card background color */
     .card-header {
       padding: 13px 14px 11px;
-      background: #fff;
       flex-shrink: 0;
     }
 
     .card-header h2 {
       font-size: 0.82rem;
       font-weight: 800;
-      color: #111827;
       margin-bottom: 6px;
       line-height: 1.2;
     }
@@ -86,11 +83,10 @@
     .card-header ul li {
       font-size: 0.60rem;
       font-weight: 500;
-      color: #4b5563;
       line-height: 1.5;
     }
 
-    /* Photo area — fills remaining space, svg fills full width */
+    /* Photo area — fills remaining space */
     .card-photo {
       flex: 1;
       min-height: 160px;
@@ -98,13 +94,47 @@
       position: relative;
     }
 
-    /* Per-card background tints matching the reference */
-    .card--teaching .card-photo { background: #cde8f2; }
-    .card--it       .card-photo { background: #c4e2f5; }
-    .card--access   .card-photo { background: #cdd8f0; }
-    .card--recruit  .card-photo { background: #fddcc8; }
-    .card--platform .card-photo { background: #fdecd8; }
-    .card--student  .card-photo { background: #d2e4f5; }
+    /* Teaching & Learning — soft lavender/purple */
+    .card--teaching                   { background: #e8e4f5; }
+    .card--teaching .card-header      { background: #e8e4f5; }
+    .card--teaching .card-photo       { background: #e8e4f5; }
+    .card--teaching .card-header h2   { color: #3b2c7a; }
+    .card--teaching .card-header li   { color: #5a4a9a; }
+
+    /* IT Support — soft sky blue */
+    .card--it                         { background: #d6edf8; }
+    .card--it .card-header            { background: #d6edf8; }
+    .card--it .card-photo             { background: #d6edf8; }
+    .card--it .card-header h2         { color: #0b4a72; }
+    .card--it .card-header li         { color: #1a6a9a; }
+
+    /* Accessibility Agent — light mint/green */
+    .card--access                     { background: #d4eedf; }
+    .card--access .card-header        { background: #d4eedf; }
+    .card--access .card-photo         { background: #d4eedf; }
+    .card--access .card-header h2     { color: #1a4d35; }
+    .card--access .card-header li     { color: #2e6b4f; }
+
+    /* Recruitment — warm peach */
+    .card--recruit                    { background: #fde3cc; }
+    .card--recruit .card-header       { background: #fde3cc; }
+    .card--recruit .card-photo        { background: #fde3cc; }
+    .card--recruit .card-header h2    { color: #7a3010; }
+    .card--recruit .card-header li    { color: #a04520; }
+
+    /* AI Platform — soft yellow/cream */
+    .card--platform                   { background: #fef4cc; }
+    .card--platform .card-header      { background: #fef4cc; }
+    .card--platform .card-photo       { background: #fef4cc; }
+    .card--platform .card-header h2   { color: #6b4d00; }
+    .card--platform .card-header li   { color: #8a6510; }
+
+    /* Student Success — soft rose/pink */
+    .card--student                    { background: #fadadd; }
+    .card--student .card-header       { background: #fadadd; }
+    .card--student .card-photo        { background: #fadadd; }
+    .card--student .card-header h2    { color: #6b1a2a; }
+    .card--student .card-header li    { color: #8a2a3e; }
 
     /* ── Brand Logo ── */
     .brand-logo {

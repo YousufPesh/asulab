@@ -9,10 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --green: #3a7d44;
-      --green-dark: #2d6235;
-      --green-bg: #eef7f0;
-      --green-light: #d4edda;
+      --green: #2e6b4f;
+      --green-dark: #1a4d35;
+      --green-bg: #d4eedf;
+      --green-light: #b0dfc4;
       --navy: #1a2d42;
       --page-bg: #fff;
     }
@@ -57,14 +57,20 @@
       display: block;
     }
 
-    /* ── HERO (nav only) ── */
+    /* ── HERO ── */
     .hero {
-      background: #f9fafb;
-      padding: 2rem 2rem 0;
+      background: linear-gradient(135deg, #d4eedf 0%, #b0dfc4 100%);
+      padding: 2.5rem 2rem 3rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    .hero-pdf-panels {
+      width: 100%;
+      max-width: 1100px;
+      margin-top: 2rem;
     }
 
     /* ── QUICK NAV ── */
@@ -139,9 +145,14 @@
       letter-spacing: -0.03em;
       margin-bottom: 2rem;
       line-height: 1.2;
+      text-align: center;
     }
 
     .hero-headline span { color: var(--green); }
+
+    .hero-headline .highlight-auto {
+      color: var(--green);
+    }
 
     /* Before/After */
     .before-after {
@@ -168,7 +179,7 @@
 
     .ba-label--after {
       color: var(--green);
-      background: var(--green-bg);
+      background: #fff;
     }
 
     .ba-content {
@@ -666,310 +677,59 @@
       </a>
 
     </nav>
+    <!-- Headline + PDF panels inside gradient -->
+    <h1 class="hero-headline">Every document.<br>Compliant. <span class="highlight-auto">Automatically.</span></h1>
+
+    <div class="hero-pdf-panels">
+      <div class="before-after" style="grid-template-columns:1fr 1fr; margin-bottom:0;">
+        <div class="ba-panel" style="background:#fff;">
+          <div class="ba-label">Before</div>
+          <iframe src="assets/math-formula-sheet.pdf" style="width:100%; height:340px; border:none; display:block;"></iframe>
+        </div>
+        <div class="ba-panel" style="background:#fff;">
+          <div class="ba-label ba-label--after">After</div>
+          <iframe src="assets/math-formula-sheet.pdf" style="width:100%; height:340px; border:none; display:block;"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center; margin-top:1.25rem;">
+      <span style="background:#fff; color:#2e6b4f; font-size:0.78rem; font-weight:700; border-radius:99px; padding:0.45rem 1.1rem; border:1.5px solid #2e6b4f;">WCAG 2.1 AA Compliance</span>
+      <span style="background:#fff; color:#2e6b4f; font-size:0.78rem; font-weight:700; border-radius:99px; padding:0.45rem 1.1rem; border:1.5px solid #2e6b4f;">Zero Hours Spent</span>
+      <span style="background:#fff; color:#2e6b4f; font-size:0.78rem; font-weight:700; border-radius:99px; padding:0.45rem 1.1rem; border:1.5px solid #2e6b4f;">Remediating Inaccessible Course Materials</span>
+    </div>
+
   </section>
 
   <main class="page-body">
 
-    <!-- ── HERO: Headline + Before/After + Feature List ── -->
-    <div class="hero-section">
-      <h1 class="hero-headline">Higher Ed has 10,000s of PDFs that must be<br><span>WCAG accessible.</span></h1>
-
-      <div class="hero-two-col">
-
-        <!-- LEFT: Before / After -->
-        <div class="before-after" style="grid-template-columns:1fr 1fr; margin-bottom:0;">
-          <div class="ba-panel">
-            <div class="ba-label">Before</div>
-            <div class="ba-content">
-              <div class="ba-doc-title">Formula Sheet — Final Exam</div>
-              <div class="ba-lines">
-                <div class="ba-formula">F = ma &nbsp; P = mv</div>
-                <div class="ba-line ba-line--full"></div>
-                <div class="ba-line ba-line--dark"></div>
-                <div class="ba-formula">∑F = 0 &nbsp; τ = rF sinθ</div>
-                <div class="ba-line ba-line--med"></div>
-                <div class="ba-line ba-line--full"></div>
-                <div class="ba-formula">E = mc²</div>
-                <div class="ba-line ba-line--short"></div>
-                <div class="ba-line ba-line--dark"></div>
-                <div class="ba-formula">PV = nRT</div>
-                <div class="ba-line ba-line--full"></div>
-                <div class="ba-line ba-line--med"></div>
-              </div>
-            </div>
-          </div>
-          <div class="ba-panel">
-            <div class="ba-label ba-label--after">After</div>
-            <div class="ba-content ba-content--after">
-              <div class="ba-doc-title" style="color:var(--green);">Formula Sheet — Final Exam</div>
-              <div class="ba-tagged">
-                <div class="ba-tag-row"><span class="ba-tag">H1</span><div class="ba-tag-line"></div></div>
-                <div class="ba-tag-row"><span class="ba-tag">Math</span><div class="ba-tag-line" style="width:60%"></div></div>
-                <div class="ba-tag-row"><span class="ba-tag">P</span><div class="ba-tag-line"></div></div>
-                <div class="ba-tag-row"><span class="ba-tag">Math</span><div class="ba-tag-line" style="width:50%"></div></div>
-                <div class="ba-tag-row"><span class="ba-tag">P</span><div class="ba-tag-line"></div></div>
-                <div class="ba-tag-row"><span class="ba-tag">Math</span><div class="ba-tag-line" style="width:40%"></div></div>
-                <div class="ba-tag-row"><span class="ba-tag">P</span><div class="ba-tag-line"></div></div>
-                <div class="ba-tag-row"><span class="ba-tag">Math</span><div class="ba-tag-line" style="width:55%"></div></div>
-                <div class="ba-tag-row"><span class="ba-tag">P</span><div class="ba-tag-line"></div></div>
-              </div>
-            </div>
-          </div>
+    <!-- ── NAU ANECDOTE ── -->
+    <div style="padding: 2rem 0 0;">
+      <div style="
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        background: #d4eedf;
+        border-radius: 16px;
+        padding: 2rem 2.5rem;
+      ">
+        <div style="flex-shrink: 0; min-width: 140px; text-align: center;">
+          <img src="assets/NAUlogo.png" alt="Northern Arizona University" style="height: 64px; width: auto; object-fit: contain; display: block; margin: 0 auto;" />
         </div>
-
-        <!-- RIGHT: Feature list -->
-        <div class="feature-list">
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                <path d="M14 2v6h6M9 13h6M9 17h4"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>Remediates Individual PDF Files</h3>
-              <p>Upload any PDF, receive a fully compliant, tagged document.</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10L12 5 2 10l10 5 10-5z"/>
-                <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>Remediates Entire Canvas Courses</h3>
-              <p>Batch process every PDF in a course with one click.</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/>
-                <path d="M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>STEM-Specialized</h3>
-              <p>Handles inline handwritten text, math &amp; chemical formulas, Cartesian coordinates.</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <path d="M3 9h18M9 21V9"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>Complex Document Support</h3>
-              <p>Photo &amp; diagram captions, complex tables, heading structure (H1–H6).</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>Automated Pipeline</h3>
-              <p>9-phase AI pipeline from upload to compliant PDF — no manual work.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 9-PHASE PIPELINE ── -->
-    <div class="pipeline-section">
-      <h2 class="section-title">9-Phase Automated Remediation Pipeline</h2>
-
-      <div class="pipeline-grid">
-
-        <div class="phase-card">
-          <div class="phase-num">Phase 01</div>
-          <h4>Initialization</h4>
-          <div class="phase-detail">Canvas LMS or Direct Upload<br>CosmosDB Record Creation</div>
-          <span class="phase-badge">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
-            Instant
-          </span>
-          <div class="phase-big-num">1</div>
-        </div>
-
-        <div class="phase-card">
-          <div class="phase-num">Phase 02</div>
-          <h4>File Acquisition</h4>
-          <div class="phase-detail">Azure Storage Queue + Blob<br>OAuth Authentication</div>
-          <span class="phase-badge">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
-            10–30 sec
-          </span>
-          <div class="phase-big-num">2</div>
-        </div>
-
-        <div class="phase-card">
-          <div class="phase-num">Phase 03</div>
-          <h4>Pre-Processing</h4>
-          <div class="phase-detail">Tesseract OSD<br>Rotation Fix &amp; Deskew</div>
-          <span class="phase-badge">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><path d="M2 8l3 3 6-6"/></svg>
-            Fast
-          </span>
-          <div class="phase-big-num">3</div>
-        </div>
-
-        <div class="phase-card">
-          <div class="phase-num">Phase 04</div>
-          <h4>OCR Processing</h4>
-          <div class="phase-detail">Mistral AI Integration<br>Text + Image Extraction</div>
-          <span class="phase-badge">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
-            1–3 min
-          </span>
-          <div class="phase-big-num">4</div>
-        </div>
-
-        <div class="phase-card">
-          <div class="phase-num">Phase 05</div>
-          <h4>WCAG Compliance</h4>
-          <div class="phase-detail">GPT-4o Structural Analysis<br>Initial Alt Text Generation</div>
-          <span class="phase-badge">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
-            1–2 min
-          </span>
-          <div class="phase-big-num">5</div>
-        </div>
-
-        <div class="phase-card">
-          <div class="phase-num">Phase 06</div>
-          <h4>Content Remediation</h4>
-          <div class="phase-detail">GPT-4o Vision for Complex Tables<br>LaTeX Math &amp; STEM Formulas</div>
-          <span class="phase-badge">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
-            1–2 min
-          </span>
-          <div class="phase-big-num">6</div>
-        </div>
-
-        <div class="phase-card">
-          <div class="phase-num">Phase 07</div>
-          <h4>Auto-Tagging</h4>
-          <div class="phase-detail">PDFix SDK Integration<br>H1–H6, Lists, Accessible Tags</div>
-          <span class="phase-badge">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
-            20–40 sec
-          </span>
-          <div class="phase-big-num">7</div>
-        </div>
-
-        <div class="phase-card">
-          <div class="phase-num">Phase 08</div>
-          <h4>Canvas Upload</h4>
-          <div class="phase-detail">Processed, compliant files<br>synced back to LMS automatically</div>
-          <span class="phase-badge">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
-            Instant
-          </span>
-          <div class="phase-big-num">8</div>
-        </div>
-
-        <div class="phase-card">
-          <div class="phase-num">Phase 09</div>
-          <h4>Finalization</h4>
-          <div class="phase-detail">Audit Logs Generation<br>Secure Data Cleanup</div>
-          <span class="phase-badge">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
-            Instant
-          </span>
-          <div class="phase-big-num">9</div>
-        </div>
-
-      </div>
-
-      <div class="pipeline-footer">
-        <div class="pipeline-footer-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Total processing time: ~6–8 minutes per document
-        </div>
-        <div class="pipeline-footer-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          Zero human intervention required at any phase
-        </div>
-        <div class="pipeline-footer-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          Handles scanned PDFs, handwritten notes, STEM
-        </div>
-        <div class="pipeline-footer-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          Output is fully tagged &amp; screen-reader compatible
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SCALE SECTION ── -->
-    <div class="scale-section">
-      <div class="doc-types-label">Supported Document Types</div>
-      <div class="doc-types-grid">
-
-        <div class="doc-type-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
-          </svg>
-          Handwritten notes
-        </div>
-
-        <div class="doc-type-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-            <path d="M2 17l10 5 10-5"/>
-            <path d="M2 12l10 5 10-5"/>
-          </svg>
-          STEM textbooks (math, chemistry)
-        </div>
-
-        <div class="doc-type-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-            <path d="M14 2v6h6"/>
-          </svg>
-          Scanned documents
-        </div>
-
-        <div class="doc-type-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M3 9h18M9 21V9"/>
-          </svg>
-          Complex tables &amp; data
-        </div>
-
-        <div class="doc-type-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
-          </svg>
-          Diagrams &amp; charts
-        </div>
-
-        <div class="doc-type-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 10L12 5 2 10l10 5 10-5z"/>
-            <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
-          </svg>
-          Course syllabi &amp; assignments
-        </div>
-
+        <div style="
+          width: 2px;
+          align-self: stretch;
+          background: #2e6b4f;
+          border-radius: 2px;
+          flex-shrink: 0;
+          opacity: 0.35;
+        "></div>
+        <p style="
+          font-size: 0.95rem;
+          color: #374151;
+          line-height: 1.65;
+          margin: 0;
+        "><strong>Northern Arizona University's</strong> accessibility director evaluated tools for 2+ years — tested AWS and Yuga solutions — and found CampusMind handled every complex scenario including multi-line tables, diagram captions, and medical textbook layouts.</p>
       </div>
     </div>
 
@@ -1067,6 +827,64 @@
         <span><span class="check-yes">✓</span> Full support</span>
         <span><span class="check-partial">–</span> Partial support</span>
         <span><span class="check-no">✗</span> Not supported</span>
+      </div>
+    </div>
+
+    <!-- ── 3-STEP PIPELINE ── -->
+    <div class="pipeline-section">
+      <h2 class="section-title">3-Step Remediation Pipeline.</h2>
+
+      <div style="display:flex; gap:0; position:relative;">
+
+        <!-- Vertical line -->
+        <div style="display:flex; flex-direction:column; align-items:center; padding-top:1.1rem; margin-right:1.25rem; flex-shrink:0;">
+          <div style="width:14px; height:14px; border-radius:50%; background:#2e6b4f; flex-shrink:0;"></div>
+          <div style="width:2px; flex:1; background:#c8e6d4; margin:4px 0;"></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#2e6b4f; flex-shrink:0;"></div>
+          <div style="width:2px; flex:1; background:#c8e6d4; margin:4px 0;"></div>
+          <div style="width:14px; height:14px; border-radius:50%; background:#2e6b4f; flex-shrink:0;"></div>
+        </div>
+
+        <!-- Steps -->
+        <div style="display:flex; flex-direction:column; gap:0.75rem; flex:1;">
+
+          <!-- Step 01 -->
+          <div style="border:1.5px solid #e5e7eb; border-radius:10px; padding:1.25rem 1.5rem; background:#fff;">
+            <div style="font-size:0.68rem; font-weight:800; letter-spacing:0.1em; color:#2e6b4f; margin-bottom:0.35rem;">01</div>
+            <h4 style="font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Ingestion &amp; Pre-Processing</h4>
+            <p style="font-size:0.82rem; color:#6b7280; line-height:1.55; margin-bottom:0.85rem;">Documents are automatically pulled from Canvas or uploaded directly. The system deskews, crops, and prepares the file for analysis.</p>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span style="border:1px solid #d1d5db; border-radius:4px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600; color:#374151; letter-spacing:0.05em;">FILE ACQUISITION</span>
+              <span style="border:1px solid #d1d5db; border-radius:4px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600; color:#374151; letter-spacing:0.05em;">DESKEWING</span>
+              <span style="border:1px solid #d1d5db; border-radius:4px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600; color:#374151; letter-spacing:0.05em;">CROPPING</span>
+            </div>
+          </div>
+
+          <!-- Step 02 -->
+          <div style="border:1.5px solid #e5e7eb; border-radius:10px; padding:1.25rem 1.5rem; background:#fff;">
+            <div style="font-size:0.68rem; font-weight:800; letter-spacing:0.1em; color:#2e6b4f; margin-bottom:0.35rem;">02</div>
+            <h4 style="font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">AI Analysis &amp; Remediation</h4>
+            <p style="font-size:0.82rem; color:#6b7280; line-height:1.55; margin-bottom:0.85rem;">Advanced OCR extracts text. The AI analyzes document structure (headings, lists, tables) and generates contextual alt-text for all images.</p>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span style="border:1px solid #d1d5db; border-radius:4px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600; color:#374151; letter-spacing:0.05em;">OCR EXTRACTION</span>
+              <span style="border:1px solid #d1d5db; border-radius:4px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600; color:#374151; letter-spacing:0.05em;">STRUCTURAL ANALYSIS</span>
+              <span style="border:1px solid #d1d5db; border-radius:4px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600; color:#374151; letter-spacing:0.05em;">ALT-TEXT GEN</span>
+            </div>
+          </div>
+
+          <!-- Step 03 -->
+          <div style="border:1.5px solid #e5e7eb; border-radius:10px; padding:1.25rem 1.5rem; background:#fff;">
+            <div style="font-size:0.68rem; font-weight:800; letter-spacing:0.1em; color:#2e6b4f; margin-bottom:0.35rem;">03</div>
+            <h4 style="font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Tagging &amp; Delivery</h4>
+            <p style="font-size:0.82rem; color:#6b7280; line-height:1.55; margin-bottom:0.85rem;">The document is automatically tagged according to WCAG 2.1 AA standards and synced back to the LMS, ready for screen readers.</p>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span style="border:1px solid #d1d5db; border-radius:4px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600; color:#374151; letter-spacing:0.05em;">AUTO-TAGGING</span>
+              <span style="border:1px solid #d1d5db; border-radius:4px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600; color:#374151; letter-spacing:0.05em;">VALIDATION</span>
+              <span style="border:1px solid #d1d5db; border-radius:4px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600; color:#374151; letter-spacing:0.05em;">LMS SYNC</span>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
