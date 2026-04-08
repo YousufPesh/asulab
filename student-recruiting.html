@@ -55,7 +55,7 @@
       display: block;
     }
 
-    /* ── HERO (nav only) ── */
+    /* ── HERO (nav + stat + screenshot) ── */
     .hero {
       background: linear-gradient(135deg, #fde3cc 0%, #fbc8a0 100%);
       padding: 2.5rem 2rem 3rem;
@@ -535,7 +535,7 @@
     </a>
   </header>
 
-  <!-- ── NAV ── -->
+  <!-- ── HERO (nav + stat + screenshot) ── -->
   <section class="hero">
     <nav class="quick-nav" aria-label="AI Workforces quick navigation">
 
@@ -600,214 +600,22 @@
       </a>
 
     </nav>
+
+    <!-- Stat + screenshot inside gradient -->
+    <div style="text-align:center; width:100%; max-width:1100px; margin-top:2rem; padding:0 1.5rem;">
+      <div class="big-stat" style="align-items:center;">
+        <div class="big-stat-number">1 : 1</div>
+        <div class="big-stat-label">Advising at Scale</div>
+      </div>
+      <img
+        src="assets/Screenshot 2026-04-07 at 11.48.46%E2%80%AFPM.png"
+        alt="Advising at Scale screenshot"
+        style="margin-top:2rem; max-width:100%; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.12);"
+      />
+    </div>
   </section>
 
   <main class="page-body">
-
-    <!-- ── HERO: Headline + 1:1 stat + Agent list ── -->
-    <div class="hero-section">
-      <h1 class="hero-headline">Personalized Guidance for Every Student Journey.</h1>
-
-      <div class="hero-two-col">
-
-        <!-- LEFT: Big 1:1 stat -->
-        <div class="big-stat">
-          <div class="big-stat-number">1 : 1</div>
-          <div class="big-stat-label">Advising at Scale</div>
-          <p class="big-stat-desc">CampusMind deploys specialized AI agents to guide students from their first inquiry as a prospect, all the way through course selection and career planning.</p>
-        </div>
-
-        <!-- RIGHT: Agent feature list -->
-        <div class="feature-list">
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10L12 5 2 10l10 5 10-5z"/>
-                <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>Admissions &amp; Outreach Agent</h3>
-              <p>Engages prospective students, answers admissions FAQs, and drives enrollment conversion.</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 6h16M4 12h16M4 18h7"/>
-                <path d="M17 15l3 3-3 3"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>Course Advisor Agent</h3>
-              <p>Helps students select classes based on degree requirements, prerequisites, and academic goals.</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="7" width="20" height="14" rx="2"/>
-                <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>Career Advisor Agent</h3>
-              <p>Integrates with O*NET to map academic pathways to real-world job market data and salary expectations.</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>Transfer Articulation Agent</h3>
-              <p>Instantly evaluates transcripts to show prospective transfer students which credits will be accepted.</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <path d="M3 9h18M9 21V9"/>
-              </svg>
-            </div>
-            <div class="feature-text">
-              <h3>SIS Summary Agent</h3>
-              <p>Connects to your Student Information System to provide personalized, context-aware answers.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ── HUB AND SPOKE ARCHITECTURE ── -->
-    <div class="arch-section">
-      <h2 class="section-title">Hub-and-Spoke Agent Architecture</h2>
-
-      <div class="hub-grid">
-
-        <!-- Row 1 -->
-        <div class="spoke-card spoke-top-left">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M3 9h18M9 21V9"/>
-          </svg>
-          <div class="spoke-card-title">SIS Summary Agent</div>
-          <div class="spoke-card-desc">Integrates with Banner, Workday, PeopleSoft for real-time student data.</div>
-        </div>
-
-        <div class="spoke-card spoke-top-mid">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 10L12 5 2 10l10 5 10-5z"/>
-            <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
-          </svg>
-          <div class="spoke-card-title">Outreach Agent</div>
-          <div class="spoke-card-desc">Proactive campaigns via Email &amp; SMS to drive enrollment and retention.</div>
-        </div>
-
-        <div class="spoke-card spoke-top-right">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7b43d1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 6h16M4 12h16M4 18h7"/>
-            <path d="M17 15l3 3-3 3"/>
-          </svg>
-          <div class="spoke-card-title">Course Advisor</div>
-          <div class="spoke-card-desc">Builds personalized class maps and checks prerequisites dynamically.</div>
-        </div>
-
-        <!-- Row 2: Transfer | HUB | Course Advisor -->
-        <div class="spoke-card spoke-mid-left">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/>
-          </svg>
-          <div class="spoke-card-title">Transfer Articulation</div>
-          <div class="spoke-card-desc">Evaluates transcripts and maps external credits to institutional equivalencies.</div>
-        </div>
-
-        <!-- CENTER HUB -->
-        <div class="hub-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="7" r="3"/>
-            <path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
-            <path d="M16 3.13a4 4 0 010 7.75"/>
-            <path d="M21 21v-2a4 4 0 00-3-3.87"/>
-          </svg>
-          <div class="hub-card-title">Student Profile &amp; Orchestrator</div>
-          <div class="hub-card-desc">Maintains shared context across all interactions. Routes queries to specialized agents.</div>
-        </div>
-
-        <div class="spoke-card spoke-mid-right">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7b43d1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-          </svg>
-          <div class="spoke-card-title">Student Success</div>
-          <div class="spoke-card-desc">Identifies at-risk students early based on engagement and academic signals.</div>
-        </div>
-
-        <!-- Row 3 -->
-        <div class="spoke-card spoke-bot-left">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2"/>
-            <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
-          </svg>
-          <div class="spoke-card-title">Career Advisor</div>
-          <div class="spoke-card-desc">O*NET integration maps coursework to labor market skills and job outcomes.</div>
-        </div>
-
-        <div class="spoke-card spoke-bot-mid" style="border-top:none; background:#f9fafb;">
-          <!-- empty spacer -->
-        </div>
-
-        <div class="spoke-card spoke-bot-right">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3a7d44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-          <div class="spoke-card-title">Student Success</div>
-          <div class="spoke-card-desc">Identifies at-risk students early based on engagement and academic signals.</div>
-        </div>
-
-      </div>
-
-      <!-- Footer callouts -->
-      <div class="arch-footer">
-        <div class="arch-footer-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
-          </svg>
-          <div>
-            <div class="arch-footer-label">Specialized Agents</div>
-            <div class="arch-footer-desc">Each agent is fine-tuned for a specific domain, reducing hallucination.</div>
-          </div>
-        </div>
-        <div class="arch-footer-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/>
-          </svg>
-          <div>
-            <div class="arch-footer-label">Shared Context</div>
-            <div class="arch-footer-desc">The orchestrator ensures agents share data, creating a seamless student experience.</div>
-          </div>
-        </div>
-        <div class="arch-footer-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2"/>
-            <path d="M7 11V7a5 5 0 0110 0v4"/>
-          </svg>
-          <div>
-            <div class="arch-footer-label">Secure Integration</div>
-            <div class="arch-footer-desc">MCP servers securely connect agents to on-premise and cloud SIS/CRM systems.</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- ── IMPACT + JOURNEY ── -->
     <div class="impact-section">
@@ -913,6 +721,142 @@
           </div>
 
         </div>
+      </div>
+    </div>
+
+    <!-- ── MULTI-AGENT ECOSYSTEM ── -->
+    <div class="arch-section">
+      <h1 style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:#111827; letter-spacing:-0.03em; margin-bottom:3rem; line-height:1.1;">A unified multi-agent ecosystem.</h1>
+
+      <!-- Column labels row -->
+      <div style="display:grid; grid-template-columns:200px 60px 1fr 60px 1fr; margin-bottom:0.75rem; padding:0;">
+        <div style="font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9ca3af;">User Interface</div>
+        <div></div>
+        <div style="font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9ca3af; text-align:center;">Specialized Agents</div>
+        <div></div>
+        <div style="font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9ca3af; text-align:right; padding-right:1rem;">Data Sources</div>
+      </div>
+
+      <!-- Main diagram row -->
+      <div style="display:grid; grid-template-columns:200px 60px 1fr 60px 1fr; align-items:center; gap:0;">
+
+        <!-- LEFT: Student box -->
+        <div style="background:#1a2d42; border-radius:12px; padding:2.5rem 1.5rem; display:flex; flex-direction:column; align-items:center; gap:0.6rem; height:280px; justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10L12 5 2 10l10 5 10-5z" stroke="#a78bfa" stroke-width="1.5"/>
+            <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" stroke="#a78bfa" stroke-width="1.5"/>
+            <circle cx="12" cy="17" r="2.5" stroke="#a78bfa" stroke-width="1.2" fill="none"/>
+            <path d="M8 23v-1a4 4 0 018 0v1" stroke="#a78bfa" stroke-width="1.2"/>
+          </svg>
+          <div style="font-size:1.1rem; font-weight:700; color:#a78bfa; margin-top:0.25rem;">Student</div>
+          <div style="font-size:0.7rem; color:#6b7280; text-align:center;">Web, SMS, or WhatsApp</div>
+        </div>
+
+        <!-- Connector: Student → Agents -->
+        <div style="height:280px; display:flex; align-items:center; justify-content:center;">
+          <svg width="60" height="280" viewBox="0 0 60 280" fill="none">
+            <line x1="0" y1="140" x2="30" y2="140" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="30" y1="47" x2="30" y2="233" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="30" y1="47" x2="60" y2="47" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="30" y1="140" x2="60" y2="140" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="30" y1="233" x2="60" y2="233" stroke="#d1d5db" stroke-width="1.5"/>
+          </svg>
+        </div>
+
+        <!-- CENTER: Agent cards -->
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <div style="border:2px solid #1a2d42; border-radius:10px; padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem; background:#fff;">
+            <div style="width:38px; height:38px; background:#f3f0ff; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.95rem; font-weight:700; color:#111827;">Course Advisor</div>
+              <div style="font-size:0.75rem; color:#6b7280; margin-top:0.15rem;">Degree planning &amp; articulation</div>
+            </div>
+          </div>
+          <div style="border:2px solid #1a2d42; border-radius:10px; padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem; background:#fff;">
+            <div style="width:38px; height:38px; background:#f3f0ff; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.95rem; font-weight:700; color:#111827;">Career Advisor</div>
+              <div style="font-size:0.75rem; color:#6b7280; margin-top:0.15rem;">Skills mapping &amp; job matching</div>
+            </div>
+          </div>
+          <div style="border:2px solid #1a2d42; border-radius:10px; padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem; background:#fff;">
+            <div style="width:38px; height:38px; background:#f3f0ff; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.95rem; font-weight:700; color:#111827;">Outreach Agent</div>
+              <div style="font-size:0.75rem; color:#6b7280; margin-top:0.15rem;">Proactive engagement</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connector: Agents → Data Sources -->
+        <div style="height:280px; display:flex; align-items:center; justify-content:center;">
+          <svg width="60" height="280" viewBox="0 0 60 280" fill="none">
+            <line x1="30" y1="47" x2="30" y2="233" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="0" y1="47" x2="30" y2="47" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="0" y1="140" x2="30" y2="140" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="0" y1="233" x2="30" y2="233" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="30" y1="47" x2="60" y2="47" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="30" y1="140" x2="60" y2="140" stroke="#d1d5db" stroke-width="1.5"/>
+            <line x1="30" y1="233" x2="60" y2="233" stroke="#d1d5db" stroke-width="1.5"/>
+          </svg>
+        </div>
+
+        <!-- RIGHT: Data source cards -->
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <div style="border:1.5px solid #e5e7eb; border-radius:10px; padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem; background:#f9fafb;">
+            <div style="width:38px; height:38px; background:#eef0f3; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.95rem; font-weight:700; color:#111827;">SIS (Banner/Workday)</div>
+              <div style="font-size:0.75rem; color:#6b7280; margin-top:0.15rem;">Student records &amp; transcripts</div>
+            </div>
+          </div>
+          <div style="border:1.5px solid #e5e7eb; border-radius:10px; padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem; background:#f9fafb;">
+            <div style="width:38px; height:38px; background:#eef0f3; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.95rem; font-weight:700; color:#111827;">O*NET Integration</div>
+              <div style="font-size:0.75rem; color:#6b7280; margin-top:0.15rem;">Labor market data</div>
+            </div>
+          </div>
+          <div style="border:1.5px solid #e5e7eb; border-radius:10px; padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem; background:#f9fafb;">
+            <div style="width:38px; height:38px; background:#eef0f3; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                <path d="M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:0.95rem; font-weight:700; color:#111827;">CRM (Salesforce)</div>
+              <div style="font-size:0.75rem; color:#6b7280; margin-top:0.15rem;">Applicant tracking</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
