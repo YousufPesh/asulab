@@ -132,6 +132,18 @@
       line-height: 1.65;
     }
 
+    .hero-screenshot {
+      margin: 2rem auto 2rem;
+      max-width: 720px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    }
+    .hero-screenshot img {
+      width: 100%;
+      display: block;
+    }
+
     .hero-pills {
       display: flex;
       align-items: center;
@@ -299,19 +311,28 @@
 
     /* ── COMPLIANCE ── */
     .compliance-strip {
-      display: flex; align-items: center; justify-content: center;
-      gap: 2rem; flex-wrap: wrap;
-      padding: 1.5rem;
-      background: #f9fafb; border: 1.5px solid #e5e7eb; border-radius: 14px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      padding: 0;
+      background: #f9fafb;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
     }
 
     .compliance-item {
       display: flex; flex-direction: column; align-items: center;
-      gap: 0.3rem; text-align: center;
+      justify-content: center;
+      gap: 0.5rem; text-align: center;
+      padding: 1.8rem 1rem;
+      border-right: 1.5px solid #e5e7eb;
     }
 
+    .compliance-item:last-child { border-right: none; }
+
     .compliance-item svg { width: 28px; height: 28px; }
-    .compliance-item span { font-size: 0.75rem; font-weight: 700; color: #374151; letter-spacing: 0.03em; }
+    .compliance-item span { font-size: 0.8rem; font-weight: 700; color: #374151; letter-spacing: 0.03em; }
 
     /* ── STATS ── */
     .impact-section {
@@ -475,119 +496,98 @@
     </nav>
 
     <h1>Build Your Own<br/><span>AI Agents</span></h1>
-    <p>A no-code platform to create, deploy, and manage custom AI workflows — integrated with 2,000+ enterprise connectors and secured inside your university's environment.</p>
+    <div class="hero-screenshot">
+      <img src="assets/aiplatform.png" alt="AI Platform screenshot" />
+    </div>
     <div class="hero-pills">
       <span class="hero-pill">
         <svg viewBox="0 0 16 16"><path d="M13.5 4.5L6.5 11.5 2.5 7.5"/></svg>
-        No-Code Agent Builder
-      </span>
-      <span class="hero-pill">
-        <svg viewBox="0 0 16 16"><path d="M13.5 4.5L6.5 11.5 2.5 7.5"/></svg>
-        2,000+ Connectors
+        Seamless Integration
       </span>
       <span class="hero-pill">
         <svg viewBox="0 0 16 16"><path d="M13.5 4.5L6.5 11.5 2.5 7.5"/></svg>
         Enterprise Security
+      </span>
+      <span class="hero-pill">
+        <svg viewBox="0 0 16 16"><path d="M13.5 4.5L6.5 11.5 2.5 7.5"/></svg>
+        Multi-Agent Orchestration
       </span>
     </div>
   </section>
 
   <main class="page-body">
 
-    <div class="features-grid">
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="3"/>
-            <path d="M9 9h6M9 12h6M9 15h4"/>
-          </svg>
-        </div>
-        <h3>No-Code Agent Builder</h3>
+    <!-- ── UNIVERSITY OF CHICAGO TESTIMONIAL ── -->
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      background: #fff7ed;
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+    ">
+      <div style="flex-shrink: 0; min-width: 160px;">
+        <img src="assets/logos/uchi.png" alt="University of Chicago" style="height: 64px; width: auto; object-fit: contain; display: block;" />
       </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/>
-            <path d="M8 12h8M12 8v8"/>
-          </svg>
-        </div>
-        <h3>Custom Workflow Builder</h3>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/>
-            <line x1="7" y1="5" x2="17" y2="5"/>
-            <line x1="6.3" y1="6.7" x2="10.8" y2="17.3"/>
-            <line x1="17.7" y1="6.7" x2="13.2" y2="17.3"/>
-          </svg>
-        </div>
-        <h3>2,000+ Integrations</h3>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-        </div>
-        <h3>Enterprise-Grade Security</h3>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <path d="M8 21h8M12 17v4"/>
-          </svg>
-        </div>
-        <h3>Live Monitoring Dashboard</h3>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-            <path d="M2 17l10 5 10-5"/>
-            <path d="M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-        <h3>Built on Azure AI</h3>
-      </div>
-
+      <div style="
+        width: 2px;
+        align-self: stretch;
+        background: #fed7aa;
+        border-radius: 2px;
+        flex-shrink: 0;
+      "></div>
+      <p style="
+        font-size: 0.95rem;
+        color: #374151;
+        line-height: 1.65;
+        margin: 0;
+      "><strong>University of Chicago</strong> built PhoenixAI on CampusMind — a secure gen AI platform now adopted campus-wide with governed chat and document intelligence, all data private within their Azure environment.</p>
     </div>
 
-    <!-- How it works -->
-    <div>
-      <p class="section-label">How it works</p>
-      <h2 class="section-title">Launch your first agent in minutes</h2>
+    <!-- ── ENROLLMENT ASSISTANT EXAMPLE ── -->
+    <div class="impact-interaction-box">
+      <div class="impact-interaction-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/>
+          <line x1="7" y1="5" x2="17" y2="5"/>
+          <line x1="6.3" y1="6.7" x2="10.8" y2="17.3"/>
+          <line x1="17.7" y1="6.7" x2="13.2" y2="17.3"/>
+        </svg>
+        Example Agent: Enrollment Assistant
+      </div>
+
+      <div class="impact-query-box">
+        "I want to build an agent that answers prospective student questions via SMS"
+      </div>
+
+      <div class="impact-vta-label">AI Platform Response</div>
+
+      <ul class="impact-response-list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13.5 4.5L6.5 11.5 2.5 7.5"/>
+          </svg>
+          Selects the SMS template, connects Twilio + Slate in one click.
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13.5 4.5L6.5 11.5 2.5 7.5"/>
+          </svg>
+          Ingests your FAQs and admissions content automatically.
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13.5 4.5L6.5 11.5 2.5 7.5"/>
+          </svg>
+          Deploys a live, FERPA-compliant agent in under 30 minutes.
+        </li>
+      </ul>
     </div>
 
-    <div class="how-steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h4>Define your use case</h4>
-        <p>Choose from pre-built templates or start from scratch using the visual workflow editor.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h4>Connect your data</h4>
-        <p>Link to existing systems — Slate, Workday, ServiceNow, SharePoint — via 2,000+ connectors.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h4>Configure AI behavior</h4>
-        <p>Set guardrails, tone, escalation paths, and approval workflows with no code required.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h4>Deploy &amp; monitor</h4>
-        <p>Publish to your channels and track performance in real-time from the admin dashboard.</p>
-      </div>
+    <div style="background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.10);">
+      <img src="assets/flow.png" alt="Enrollment Assistant workflow" style="width: 100%; display: block;" />
     </div>
+
 
     <!-- Integrations -->
     <div class="integrations-section">
@@ -606,38 +606,6 @@
         <span class="int-chip"><span class="dot"></span>Zoom</span>
         <span class="int-chip"><span class="dot"></span>Twilio (SMS)</span>
         <span class="int-chip"><span class="dot"></span>Azure OpenAI</span>
-      </div>
-    </div>
-
-    <!-- Compliance -->
-    <div class="compliance-strip">
-      <div class="compliance-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
-        <span>SOC 2 Type II</span>
-      </div>
-      <div class="compliance-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="11" width="18" height="11" rx="2"/>
-          <path d="M7 11V7a5 5 0 0110 0v4"/>
-        </svg>
-        <span>FERPA</span>
-      </div>
-      <div class="compliance-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
-        </svg>
-        <span>HECVAT</span>
-      </div>
-      <div class="compliance-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5"/>
-          <path d="M2 12l10 5 10-5"/>
-        </svg>
-        <span>Azure OpenAI</span>
       </div>
     </div>
 
@@ -661,55 +629,45 @@
           </div>
         </div>
 
-        <div class="impact-divider"></div>
-
-        <div class="impact-right">
-          <div class="impact-interaction-box">
-            <div class="impact-interaction-header">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/>
-                <line x1="7" y1="5" x2="17" y2="5"/>
-                <line x1="6.3" y1="6.7" x2="10.8" y2="17.3"/>
-                <line x1="17.7" y1="6.7" x2="13.2" y2="17.3"/>
-              </svg>
-              Example Agent: Enrollment Assistant
-            </div>
-
-            <div class="impact-query-box">
-              "I want to build an agent that answers prospective student questions via SMS"
-            </div>
-
-            <div class="impact-vta-label">AI Platform Response</div>
-
-            <ul class="impact-response-list">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M13.5 4.5L6.5 11.5 2.5 7.5"/>
-                </svg>
-                Selects the SMS template, connects Twilio + Slate in one click.
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M13.5 4.5L6.5 11.5 2.5 7.5"/>
-                </svg>
-                Ingests your FAQs and admissions content automatically.
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M13.5 4.5L6.5 11.5 2.5 7.5"/>
-                </svg>
-                Deploys a live, FERPA-compliant agent in under 30 minutes.
-              </li>
-            </ul>
-          </div>
-        </div>
 
       </div>
+
+      <!-- Compliance -->
+      <div class="compliance-strip">
+        <div class="compliance-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>SOC 2 Type II</span>
+        </div>
+        <div class="compliance-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+          <span>FERPA</span>
+        </div>
+        <div class="compliance-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+          </svg>
+          <span>HECVAT</span>
+        </div>
+        <div class="compliance-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          <span>Azure OpenAI</span>
+        </div>
+      </div>
+    </div>
 
       <div class="impact-footer">
         Trusted by University of Chicago &nbsp;·&nbsp; Carlson School of Management &nbsp;·&nbsp; Roosevelt University &nbsp;·&nbsp; and more
       </div>
-    </div>
 
   </main>
 
