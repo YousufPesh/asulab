@@ -210,11 +210,8 @@
 
     /* ── Clients Section ── */
     .clients-section {
-      border: 1.5px solid #dde2ea;
-      border-radius: 18px;
-      padding: 20px 24px 18px;
-      background: #fff;
       margin-bottom: 22px;
+      overflow: hidden;
     }
 
     .clients-section h2 {
@@ -225,29 +222,30 @@
       margin-bottom: 18px;
     }
 
-    .clients-row {
+    .clients-carousel-track {
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      gap: 10px;
-      flex-wrap: nowrap;
-      margin-bottom: 14px;
+      gap: 100px;
+      animation: clients-scroll 18s linear infinite;
+      width: max-content;
     }
 
-    .clients-row:last-child { margin-bottom: 0; }
+@keyframes clients-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     .client-logo {
       display: flex;
       align-items: center;
       justify-content: center;
-      flex: 1 1 0;
-      min-width: 0;
+      flex-shrink: 0;
     }
 
     .client-logo img {
-      height: clamp(30px, 5.5vw, 54px);
+      height: clamp(60px, 11vw, 108px);
       width: auto;
-      max-width: 100%;
+      max-width: 280px;
       object-fit: contain;
     }
 
@@ -273,10 +271,6 @@
 </head>
 <body>
   <div class="page-wrapper">
-
-    <div class="hero-heading">
-      <h1>Launch an AI Workforce</h1>
-    </div>
 
     <div class="card-grid">
 
@@ -385,23 +379,19 @@
     <!-- Our Clients -->
     <div class="clients-section">
       <h2>Our Clients</h2>
-      <div class="clients-row">
-        <div class="client-logo">
-          <img src="assets/logos/uchi.png" alt="The University of Chicago" />
-        </div>
-        <div class="client-logo">
-          <img src="assets/logos/Carlson.jpg" alt="Carlson School of Management, University of Minnesota" />
-        </div>
-        <div class="client-logo">
-          <img src="assets/logos/roosevelt.png" alt="Roosevelt University" />
-        </div>
-      </div>
-      <div class="clients-row" style="justify-content: space-evenly;">
-        <div class="client-logo">
-          <img src="assets/logos/AdTalem_logo_RGB_051617.jpg" alt="Adtalem Global Education" />
-        </div>
-        <div class="client-logo">
-          <img src="assets/logos/booth.png" alt="Chicago Booth School of Business" />
+      <div style="overflow: hidden;">
+        <div class="clients-carousel-track">
+          <div class="client-logo"><img src="assets/logos/uchi.png" alt="The University of Chicago" /></div>
+          <div class="client-logo"><img src="assets/logos/Carlson.jpg" alt="Carlson School of Management" /></div>
+          <div class="client-logo"><img src="assets/logos/roosevelt.png" alt="Roosevelt University" /></div>
+          <div class="client-logo"><img src="assets/logos/AdTalem_logo_RGB_051617.jpg" alt="Adtalem Global Education" /></div>
+          <div class="client-logo"><img src="assets/logos/booth.png" alt="Chicago Booth School of Business" /></div>
+          <!-- duplicate set for seamless loop -->
+          <div class="client-logo"><img src="assets/logos/uchi.png" alt="The University of Chicago" /></div>
+          <div class="client-logo"><img src="assets/logos/Carlson.jpg" alt="Carlson School of Management" /></div>
+          <div class="client-logo"><img src="assets/logos/roosevelt.png" alt="Roosevelt University" /></div>
+          <div class="client-logo"><img src="assets/logos/AdTalem_logo_RGB_051617.jpg" alt="Adtalem Global Education" /></div>
+          <div class="client-logo"><img src="assets/logos/booth.png" alt="Chicago Booth School of Business" /></div>
         </div>
       </div>
     </div>
@@ -409,7 +399,7 @@
     <!-- Built on Azure -->
     <div class="azure-badge">
       <img
-        src="assets/builtonazure.png"
+        src="assets/azurenew.png"
         alt="Built on Microsoft Azure"
       />
     </div>
