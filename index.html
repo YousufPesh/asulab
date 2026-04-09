@@ -97,9 +97,19 @@
     /* Teaching & Learning — soft lavender/purple */
     .card--teaching                   { background: #e8e4f5; }
     .card--teaching .card-header      { background: #e8e4f5; }
-    .card--teaching .card-photo       { background: #e8e4f5; }
+    .card--teaching .card-photo       { background: #e8e4f5; position: relative; overflow: hidden; }
     .card--teaching .card-header h2   { color: #3b2c7a; }
     .card--teaching .card-header li   { color: #5a4a9a; }
+
+    .card--teaching .card-photo img {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 155px;
+      width: auto;
+      mix-blend-mode: multiply;
+    }
 
     /* IT Support — soft sky blue */
     .card--it                         { background: #d6edf8; }
@@ -108,12 +118,32 @@
     .card--it .card-header h2         { color: #0b4a72; }
     .card--it .card-header li         { color: #1a6a9a; }
 
+    .card--it .card-photo img {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 155px;
+      width: auto;
+      mix-blend-mode: multiply;
+    }
+
     /* Accessibility Agent — light mint/green */
     .card--access                     { background: #d4eedf; }
     .card--access .card-header        { background: #d4eedf; }
     .card--access .card-photo         { background: #d4eedf; }
     .card--access .card-header h2     { color: #1a4d35; }
     .card--access .card-header li     { color: #2e6b4f; }
+
+    .card--access .card-photo img {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 155px;
+      width: auto;
+      mix-blend-mode: multiply;
+    }
 
     /* Recruitment — warm peach */
     .card--recruit                    { background: #fde3cc; }
@@ -122,6 +152,16 @@
     .card--recruit .card-header h2    { color: #7a3010; }
     .card--recruit .card-header li    { color: #a04520; }
 
+    .card--recruit .card-photo img {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 155px;
+      width: auto;
+      mix-blend-mode: multiply;
+    }
+
     /* AI Platform — soft yellow/cream */
     .card--platform                   { background: #fef4cc; }
     .card--platform .card-header      { background: #fef4cc; }
@@ -129,12 +169,32 @@
     .card--platform .card-header h2   { color: #6b4d00; }
     .card--platform .card-header li   { color: #8a6510; }
 
+    .card--platform .card-photo img {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 155px;
+      width: auto;
+      mix-blend-mode: multiply;
+    }
+
     /* Student Success — soft rose/pink */
     .card--student                    { background: #fadadd; }
     .card--student .card-header       { background: #fadadd; }
     .card--student .card-photo        { background: #fadadd; }
     .card--student .card-header h2    { color: #6b1a2a; }
     .card--student .card-header li    { color: #8a2a3e; }
+
+    .card--student .card-photo img {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 155px;
+      width: auto;
+      mix-blend-mode: multiply;
+    }
 
     /* ── Brand Logo ── */
     .brand-logo {
@@ -230,7 +290,9 @@
             <li>Concept Clarification</li>
           </ul>
         </div>
-        <div class="card-photo"></div>
+        <div class="card-photo">
+          <img src="assets/teachingcover.png" alt="Teaching & Learning" />
+        </div>
       </a>
 
       <!-- 2. IT Support -->
@@ -243,7 +305,9 @@
             <li>2FA Account Resets</li>
           </ul>
         </div>
-        <div class="card-photo"></div>
+        <div class="card-photo">
+          <img src="assets/Itcover.png" alt="IT Support" />
+        </div>
       </a>
 
       <!-- 3. Accessibility Agent -->
@@ -256,7 +320,9 @@
             <li>Auto-tag &amp; Caption Generation</li>
           </ul>
         </div>
-        <div class="card-photo"></div>
+        <div class="card-photo">
+          <img src="assets/accessibilitycover.png" alt="Accessibility Agent" />
+        </div>
       </a>
 
       <!-- 4. Recruitment -->
@@ -269,7 +335,9 @@
             <li>Student Advisor Agents</li>
           </ul>
         </div>
-        <div class="card-photo"></div>
+        <div class="card-photo">
+          <img src="assets/recruitmentcover.png" alt="Recruitment" />
+        </div>
       </a>
 
       <!-- 5. AI Platform -->
@@ -282,7 +350,9 @@
             <li>Integrate w 2000+ Connectors</li>
           </ul>
         </div>
-        <div class="card-photo"></div>
+        <div class="card-photo">
+          <img src="assets/aiplatformcover.png" alt="AI Platform" />
+        </div>
       </a>
 
       <!-- 6. Student Success -->
@@ -295,7 +365,9 @@
             <li>Student Coaches</li>
           </ul>
         </div>
-        <div class="card-photo"></div>
+        <div class="card-photo">
+          <img src="assets/studentsuccesscover.png" alt="Student Success" />
+        </div>
       </a>
 
     </div>
