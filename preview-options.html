@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who It's For — Option Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f3f4f6;
+      padding: 3rem 2rem;
+      color: #111827;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 3rem; }
+
+    .option-block { display: flex; flex-direction: column; gap: 1rem; }
+    .option-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      padding: 0.4rem 0.8rem;
+      background: #1a2d42;
+      color: #fff;
+      border-radius: 6px;
+      display: inline-block;
+      width: fit-content;
+    }
+    .option-desc {
+      font-size: 0.82rem;
+      color: #6b7280;
+      margin-top: -0.25rem;
+    }
+
+    /* ── SIMULATED PAGE CONTEXT ── */
+    .page-context {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .page-context-hero {
+      background: linear-gradient(135deg, #f5f0ff 0%, #ede8fb 100%);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .page-context-hero h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1a2d42;
+    }
+    .page-context-hero h2 span { color: #7b43d1; }
+    .page-context-body {
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .placeholder-content {
+      height: 12px;
+      background: #f3f4f6;
+      border-radius: 6px;
+    }
+    .placeholder-content:nth-child(2) { width: 80%; }
+    .placeholder-content:nth-child(3) { width: 60%; }
+
+    /* ─────────────────────────────────────
+       OPTION B — Two-column card
+    ───────────────────────────────────── */
+    .option-b-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1.5px solid #ede8fb;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(123,67,209,0.08);
+    }
+    .option-b-left {
+      background: #f5f0ff;
+      padding: 1.4rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      border-right: 1.5px solid #ede8fb;
+    }
+    .option-b-right {
+      background: #fff;
+      padding: 1.4rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .col-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .col-eyebrow--purple { color: #7b43d1; }
+    .col-eyebrow--teal   { color: #0d9488; }
+
+    .persona-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .persona-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .persona-icon--purple { background: #7b43d1; }
+    .persona-icon--teal   { background: #e0faf7; }
+    .persona-icon svg { width: 22px; height: 22px; }
+
+    .persona-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1a2d42;
+      line-height: 1.2;
+    }
+    .persona-sub {
+      font-size: 0.76rem;
+      color: #6b7280;
+      margin-top: 0.2rem;
+      line-height: 1.4;
+    }
+
+    /* ─────────────────────────────────────
+       OPTION C — Persona strip
+    ───────────────────────────────────── */
+    .option-c-strip {
+      display: flex;
+      align-items: center;
+      background: #1a2d42;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 60px;
+    }
+    .strip-side {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0 1.6rem;
+      flex: 1;
+      height: 100%;
+    }
+    .strip-side--left  { border-right: 1px solid rgba(255,255,255,0.1); }
+    .strip-side--right { border-left: 1px solid rgba(255,255,255,0.1); }
+    .strip-emoji { font-size: 1.35rem; line-height: 1; }
+    .strip-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .strip-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .strip-arrow {
+      flex-shrink: 0;
+      padding: 0 1.1rem;
+      font-size: 1.2rem;
+      color: #7b43d1;
+      font-weight: 300;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Page title ── -->
+  <div style="text-align:center;">
+    <h1 style="font-size:1.4rem;font-weight:800;color:#1a2d42;margin-bottom:0.4rem;">Who It's For — Design Preview</h1>
+    <p style="font-size:0.88rem;color:#6b7280;">Both options shown in context of the Teaching &amp; Learning subpage</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       OPTION B
+  ══════════════════════════════════════════ -->
+  <div class="option-block">
+    <span class="option-label">Option B — Two-column card</span>
+    <p class="option-desc">Sits right below the hero. Two columns: "Used by" on the left, "Benefits" on the right. Clear, structured, works great for a sales/demo audience.</p>
+
+    <div class="page-context">
+      <!-- Simulated hero -->
+      <div class="page-context-hero">
+        <h2>A Virtual TA for <span>Every Course</span></h2>
+      </div>
+
+      <!-- The actual element -->
+      <div class="page-context-body">
+        <div class="option-b-card">
+          <!-- Left -->
+          <div class="option-b-left">
+            <div class="col-eyebrow col-eyebrow--purple">Used by</div>
+            <div class="persona-row">
+              <div class="persona-icon persona-icon--purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                </svg>
+              </div>
+              <div>
+                <div class="persona-name">Professors &amp; Instructors</div>
+                <div class="persona-sub">Set up once per course — no per-student configuration needed</div>
+              </div>
+            </div>
+          </div>
+          <!-- Right -->
+          <div class="option-b-right">
+            <div class="col-eyebrow col-eyebrow--teal">Benefits</div>
+            <div class="persona-row">
+              <div class="persona-icon persona-icon--teal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+                  <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
+                </svg>
+              </div>
+              <div>
+                <div class="persona-name">Every Student in the Course</div>
+                <div class="persona-sub">24/7 answers personalized to their assignments &amp; syllabus</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filler to simulate rest of page -->
+        <div class="placeholder-content"></div>
+        <div class="placeholder-content"></div>
+        <div class="placeholder-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       OPTION C
+  ══════════════════════════════════════════ -->
+  <div class="option-block">
+    <span class="option-label">Option C — Persona strip</span>
+    <p class="option-desc">A slim dark bar anchored just below the hero. Minimal, fast to scan, consistent with a dark accent style. Great as a "subtitle" to the page.</p>
+
+    <div class="page-context">
+      <!-- Simulated hero -->
+      <div class="page-context-hero">
+        <h2>A Virtual TA for <span>Every Course</span></h2>
+      </div>
+
+      <!-- The actual element -->
+      <div class="page-context-body">
+        <div class="option-c-strip">
+          <div class="strip-side strip-side--left">
+            <span class="strip-emoji">🧑‍💼</span>
+            <div>
+              <div class="strip-label">Built for</div>
+              <div class="strip-name">Professors &amp; Instructors</div>
+            </div>
+          </div>
+          <div class="strip-arrow">→</div>
+          <div class="strip-side strip-side--right">
+            <span class="strip-emoji">🎓</span>
+            <div>
+              <div class="strip-label">Delivers value to</div>
+              <div class="strip-name">Every Student in the Course</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filler -->
+        <div class="placeholder-content"></div>
+        <div class="placeholder-content"></div>
+        <div class="placeholder-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Side-by-side comparison note ── -->
+  <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:1.25rem 1.5rem;font-size:0.83rem;color:#374151;line-height:1.6;">
+    <strong>Key differences:</strong><br/>
+    · <strong>Option B</strong> takes up more vertical space (~100px) but communicates richer context — the role description text makes it immediately clear to a first-time buyer exactly who runs it vs who uses it.<br/>
+    · <strong>Option C</strong> is just 60px tall — it won't disrupt the flow of the page at all, and works well if the page is already content-heavy. The dark background creates a strong visual anchor right below the hero.
+  </div>
+
+</div>
+</body>
+</html>
