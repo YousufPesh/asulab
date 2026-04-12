@@ -927,34 +927,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
+      gap: 2.5rem;
       flex-wrap: wrap;
-      padding: 1.5rem;
-      background: #f9fafb;
-      border: 1.5px solid #e5e7eb;
-      border-radius: 14px;
-      margin-bottom: 2.5rem;
+      padding: 2rem 1.5rem;
+      border-top: 1.5px solid #e5e7eb;
+      margin-top: 2rem;
     }
-
     .compliance-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.3rem;
-      text-align: center;
+      gap: 0.4rem;
     }
-
-    .compliance-item svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    .compliance-item span {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #374151;
-      letter-spacing: 0.03em;
-    }
+    .compliance-item svg { width: 28px; height: 28px; }
+    .compliance-item span { font-size: 0.75rem; font-weight: 700; color: #374151; letter-spacing: 0.03em; text-align: center; }
 
     /* ── SHOWCASE ── */
     .showcase {
@@ -1151,11 +1137,7 @@
 
       <a href="accessibility.html">
         <span class="nav-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="4" r="1.5" fill="#9ca3af" stroke="none"/>
-            <line x1="12" y1="6" x2="12" y2="14"/>
-            <path d="M5 9h14"/><path d="M8 14l-2 6M16 14l2 6"/>
-          </svg>
+          <img src="assets/logos/accessibility-icon.webp" style="width:22px;height:22px;object-fit:contain;opacity:0.5;" />
         </span>
         Accessibility
       </a>
@@ -1196,8 +1178,8 @@
 
     </nav>
 
-    <div class="tier-label">Tier 1</div>
-    <div class="tier-sub-label">Fully Automated</div>
+    <div class="tier-label">IT Workforce</div>
+    <div class="tier-sub-label">Tier 1 Automation</div>
     <div class="tier-screenshot-wrap">
       <img src="assets/it-support-chat-screenshot.png" alt="IT Support Chat Interface" class="tier-screenshot" />
     </div>
@@ -1328,7 +1310,7 @@
 
               <div>
                 <div class="analytics-row-label">
-                  <span class="analytics-row-name">Wi-Fi &amp; Network Connectivity</span>
+                  <span class="analytics-row-name">Project intake requests</span>
                   <span class="analytics-row-pct">70% Automated</span>
                 </div>
                 <div class="analytics-bar-track">
@@ -1360,57 +1342,6 @@
     </div>
   </div>
 
-  <!-- ── INTELLIGENT TRIAGE DIAGRAM ── -->
-  <div style="max-width:1100px;margin:0 auto;width:100%;padding:2rem 1.5rem 0;">
-    <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:#1a2d42;letter-spacing:-0.02em;margin-bottom:2rem;">Intelligent Triage &amp; Resolution.</h2>
-    <div style="border:1.5px solid #d1d5db;border-radius:16px;overflow:hidden;">
-
-      <!-- ROW 1: User Channels -->
-      <div style="padding:1.5rem 2rem;border-bottom:3px solid #9ca3af;background:#fff;">
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#9ca3af;margin-bottom:0.3rem;">User Channels</div>
-        <div style="font-size:1.25rem;font-weight:800;color:#1a2d42;margin-bottom:1rem;">Inbound Requests</div>
-        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-          <div style="background:#f3f4f6;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#374151;">Teams / Slack</div>
-          <div style="background:#f3f4f6;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#374151;">Email Support</div>
-          <div style="background:#f3f4f6;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#374151;">IT Portal</div>
-        </div>
-      </div>
-
-      <!-- ROW 2: Orchestration -->
-      <div style="padding:1.5rem 2rem;border-bottom:3px solid #1a6a9a;background:#eef6fc;">
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#1a6a9a;margin-bottom:0.3rem;">Orchestration</div>
-        <div style="font-size:1.25rem;font-weight:800;color:#1a6a9a;margin-bottom:1rem;">CampusMind IT Agent</div>
-        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-          <div style="background:#d6edf8;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#1a6a9a;">Intent Recognition</div>
-          <div style="background:#d6edf8;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#1a6a9a;">Knowledge Retrieval</div>
-          <div style="background:#d6edf8;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#1a6a9a;">Action Execution</div>
-        </div>
-      </div>
-
-      <!-- ROW 3: Backend Systems -->
-      <div style="padding:1.5rem 2rem;border-bottom:3px solid #1a2d42;background:#f5f8fb;">
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#1a2d42;margin-bottom:0.3rem;">Backend Systems</div>
-        <div style="font-size:1.25rem;font-weight:800;color:#1a2d42;margin-bottom:1rem;">ITSM &amp; Identity</div>
-        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-          <div style="background:#e8eef5;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#1a2d42;">ServiceNow</div>
-          <div style="background:#e8eef5;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#1a2d42;">Active Directory</div>
-          <div style="background:#e8eef5;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#1a2d42;">Confluence</div>
-        </div>
-      </div>
-
-      <!-- ROW 4: Foundation -->
-      <div style="padding:1.5rem 2rem;background:#f8f9fb;">
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#1a2d42;margin-bottom:0.3rem;">Foundation Layer</div>
-        <div style="font-size:1.25rem;font-weight:800;color:#1a2d42;margin-bottom:1rem;">Microsoft Azure</div>
-        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-          <div style="background:#eef1f5;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#1a2d42;">Azure OpenAI</div>
-          <div style="background:#eef1f5;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#1a2d42;">Enterprise Security</div>
-          <div style="background:#eef1f5;border-radius:8px;padding:0.65rem 1.1rem;font-size:0.88rem;font-weight:600;color:#1a2d42;">FERPA Compliant</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
   <main class="page-body">
 
@@ -1418,56 +1349,38 @@
     <div class="integrations-section">
       <p class="section-label">Integrations</p>
       <h2 class="section-title">Connects to your existing IT stack</h2>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:2rem 2.5rem;margin-bottom:1.25rem;">
+        <img src="assets/servicenow.png" alt="ServiceNow" style="height:36px;width:auto;object-fit:contain;" />
+        <img src="assets/jiranew.png" alt="Jira Service Management" style="height:36px;width:auto;object-fit:contain;" />
+        <img src="assets/logos/Microsoft_Teams-Logo.wine.png" alt="Microsoft Teams" style="height:44px;width:auto;object-fit:contain;" />
+        <img src="assets/slack.png" alt="Slack" style="height:36px;width:auto;object-fit:contain;" />
+        <img src="assets/microsoft365.png" alt="Microsoft 365" style="height:36px;width:auto;object-fit:contain;" />
+      </div>
       <div class="integrations-list">
-        <span class="int-chip"><span class="dot"></span>ServiceNow</span>
-        <span class="int-chip"><span class="dot"></span>Jira Service Management</span>
-        <span class="int-chip"><span class="dot"></span>Microsoft Teams</span>
-        <span class="int-chip"><span class="dot"></span>Slack</span>
-        <span class="int-chip"><span class="dot"></span>Microsoft 365</span>
-        <span class="int-chip"><span class="dot"></span>Okta</span>
-        <span class="int-chip"><span class="dot"></span>Azure Active Directory</span>
-        <span class="int-chip"><span class="dot"></span>Google Workspace</span>
-        <span class="int-chip"><span class="dot"></span>Cisco Meraki</span>
-        <span class="int-chip"><span class="dot"></span>Jamf Pro</span>
       </div>
     </div>
 
-    <!-- ── COMPLIANCE STRIP ── -->
+    <!-- ── COMPLIANCE ── -->
     <div class="compliance-strip">
       <div class="compliance-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
-        <span>SOC 2 Type II</span>
+        <span>FERPA</span>
+      </div>
+      <div class="compliance-item">
+        <img src="assets/logos/azurelogoonly.png" alt="Microsoft Azure" style="height:24px;width:auto;object-fit:contain;" />
+        <span>Microsoft Azure</span>
       </div>
       <div class="compliance-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="2"/>
           <path d="M7 11V7a5 5 0 0110 0v4"/>
         </svg>
-        <span>FERPA</span>
-      </div>
-      <div class="compliance-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5"/>
-          <path d="M2 12l10 5 10-5"/>
-        </svg>
-        <span>Azure OpenAI</span>
-      </div>
-      <div class="compliance-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
-        </svg>
         <span>HECVAT</span>
       </div>
       <div class="compliance-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#3a8a94" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="5" r="2.2"/>
-          <path d="M5 20v-3a4 4 0 014-4h6a4 4 0 014 4v3"/>
-          <path d="M2 11h4M18 11h4M12 8v4"/>
-        </svg>
+        <img src="assets/logos/accessibility-icon.webp" alt="WCAG 2.1 AA" style="height:28px;width:auto;object-fit:contain;filter:brightness(0) saturate(100%) invert(50%) sepia(40%) saturate(600%) hue-rotate(155deg) brightness(85%);" />
         <span>WCAG 2.1 AA</span>
       </div>
     </div>
