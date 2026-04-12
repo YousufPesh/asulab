@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusMind — Get Started</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f5f6f8;
+      color: #111827;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .logo-bar {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-bar img { height: 48px; width: auto; }
+    .back-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #6b7280;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: #1a2d42; }
+
+    /* ── PAGE ── */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .page-heading {
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    .page-heading h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      color: #1a2d42;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    .page-heading p {
+      font-size: 1rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+
+    /* ── CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+    @media (max-width: 700px) {
+      .cards { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      border-radius: 14px;
+      padding: 1.4rem 1.25rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      user-select: none;
+      position: relative;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.10); }
+    .card.selected { border-color: currentColor; box-shadow: 0 0 0 3px rgba(0,0,0,0.08); }
+
+    .card-check {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .card.selected .card-check { opacity: 1; }
+    .card-check svg { width: 12px; height: 12px; }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.85rem;
+    }
+    .card-icon svg { width: 22px; height: 22px; }
+    .card h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    /* Card colour themes */
+    .card--teach  { background: #f3eeff; color: #7b43d1; }
+    .card--it     { background: #e8f6f7; color: #3a8a94; }
+    .card--access { background: #e8f5ee; color: #2e6b4f; }
+    .card--recruit{ background: #e7f6f8; color: #2a8e9e; }
+    .card--success{ background: #e8effe; color: #2563eb; }
+    .card--ai     { background: #fff4e6; color: #c2540a; }
+
+    /* ── FORM ── */
+    .form-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem 2rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    .form-card h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #1a2d42;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 560px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #374151;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .field input[type="text"],
+    .field input[type="email"] {
+      width: 100%;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: #111827;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .field input:focus { border-color: #1a2d42; }
+
+    /* Team checkboxes */
+    .checkboxes {
+      margin-bottom: 1.75rem;
+    }
+    .checkboxes label.group-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #374151;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .checkbox-grid {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+    .checkbox-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 99px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .checkbox-pill input { display: none; }
+    .checkbox-pill:has(input:checked) {
+      background: #1a2d42;
+      border-color: #1a2d42;
+      color: #fff;
+    }
+
+    /* Submit */
+    .submit-btn {
+      width: 100%;
+      background: #1a2d42;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.9rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      letter-spacing: 0.01em;
+    }
+    .submit-btn:hover { background: #243d58; transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { background: #9ca3af; cursor: not-allowed; transform: none; }
+
+    /* Success message */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+    .success-msg svg { width: 48px; height: 48px; color: #2e6b4f; margin-bottom: 0.75rem; }
+    .success-msg h3 { font-size: 1.2rem; font-weight: 800; color: #1a2d42; margin-bottom: 0.4rem; }
+    .success-msg p { font-size: 0.9rem; color: #6b7280; }
+  </style>
+</head>
+<body>
+
+  <header class="logo-bar">
+    <a href="index.html">
+      <img src="assets/logos/698f334eeb7c124d7e307f6b_aedce99fd467da7af179cacf2fe1ea3c_cm-logo-final.svg" alt="CampusMind" />
+    </a>
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M10 3L5 8l5 5"/></svg>
+      Back
+    </a>
+  </header>
+
+  <div class="page">
+    <div class="page-heading">
+      <h1>Get Started with CampusMind</h1>
+      <p>Tell us which areas you're interested in and we'll be in touch.</p>
+    </div>
+
+    <!-- Category Cards -->
+    <div class="cards">
+
+      <div class="card card--teach" onclick="toggleCard(this)">
+        <div class="card-check">
+          <svg viewBox="0 0 16 16" fill="none" stroke="#7b43d1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8l4 4 7-7"/></svg>
+        </div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3.33 1.67 8.67 1.67 12 0v-5"/></svg>
+        </div>
+        <h3>Teaching &amp; Learning</h3>
+      </div>
+
+      <div class="card card--it" onclick="toggleCard(this)">
+        <div class="card-check">
+          <svg viewBox="0 0 16 16" fill="none" stroke="#3a8a94" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8l4 4 7-7"/></svg>
+        </div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>IT Workforce</h3>
+      </div>
+
+      <div class="card card--access" onclick="toggleCard(this)">
+        <div class="card-check">
+          <svg viewBox="0 0 16 16" fill="none" stroke="#2e6b4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8l4 4 7-7"/></svg>
+        </div>
+        <div class="card-icon">
+          <img src="assets/logos/accessibility-icon.webp" style="width:22px;height:22px;object-fit:contain;filter:brightness(0) saturate(100%) invert(35%) sepia(50%) saturate(700%) hue-rotate(120deg) brightness(70%);" />
+        </div>
+        <h3>Accessibility</h3>
+      </div>
+
+      <div class="card card--recruit" onclick="toggleCard(this)">
+        <div class="card-check">
+          <svg viewBox="0 0 16 16" fill="none" stroke="#2a8e9e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8l4 4 7-7"/></svg>
+        </div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Student Recruiting</h3>
+      </div>
+
+      <div class="card card--success" onclick="toggleCard(this)">
+        <div class="card-check">
+          <svg viewBox="0 0 16 16" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8l4 4 7-7"/></svg>
+        </div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Student Success</h3>
+      </div>
+
+      <div class="card card--ai" onclick="toggleCard(this)">
+        <div class="card-check">
+          <svg viewBox="0 0 16 16" fill="none" stroke="#c2540a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8l4 4 7-7"/></svg>
+        </div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>AI Platform</h3>
+      </div>
+
+    </div>
+
+    <!-- Form -->
+    <div class="form-card">
+      <div id="form-inner">
+        <h2>Your details</h2>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Jane Smith" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="jane@university.edu" />
+          </div>
+        </div>
+
+        <div class="checkboxes">
+          <label class="group-label">Team Member</label>
+          <div class="checkbox-grid">
+            <label class="checkbox-pill"><input type="checkbox" value="Ammar" /> Ammar</label>
+            <label class="checkbox-pill"><input type="checkbox" value="Asas" /> Asas</label>
+            <label class="checkbox-pill"><input type="checkbox" value="Jazil" /> Jazil</label>
+            <label class="checkbox-pill"><input type="checkbox" value="Yousuf" /> Yousuf</label>
+          </div>
+        </div>
+
+        <button class="submit-btn" id="submit-btn" onclick="submitForm()">Submit</button>
+      </div>
+
+      <div class="success-msg" id="success-msg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3>You're all set!</h3>
+        <p>We've received your request and will be in touch soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle('selected');
+    }
+
+    function getSelectedCategories() {
+      return Array.from(document.querySelectorAll('.card.selected h3'))
+        .map(h => h.textContent.trim()).join(', ');
+    }
+
+    function getSelectedTeamMembers() {
+      return Array.from(document.querySelectorAll('.checkbox-pill input:checked'))
+        .map(cb => cb.value).join(', ');
+    }
+
+    async function submitForm() {
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      const params = new URLSearchParams({
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        teamMembers: getSelectedTeamMembers(),
+        categories: getSelectedCategories(),
+        timestamp: new Date().toLocaleString()
+      });
+
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbwiunzP9x2KjPsl9jB_4x3ckfbwv5L8Tf0XfYy3XjN1_pkPQ_blAMn4wQmpl5-drFcU/exec?' + params.toString(), {
+          method: 'GET',
+          mode: 'no-cors'
+        });
+      } catch (e) {
+        // treat as success
+      }
+
+      document.getElementById('form-inner').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
